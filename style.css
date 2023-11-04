@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.home-page-logged-out {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .home-page-logged-out .div {
+    background-color: #ffffff;
+    width: 1440px;
+    height: 605px;
+    position: relative;
+  }
+  
+  .home-page-logged-out .buttons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1052px;
+    height: 423px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 200px 50px;
+    position: absolute;
+    top: 132px;
+    left: 194px;
+  }
+  
+  .home-page-logged-out .button {
+    position: relative;
+    width: 302px;
+    height: 300px;
+  }
+  
+  .home-page-logged-out .overlap-group {
+    background-color: #ffa800;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+  }
+  
+  .home-page-logged-out .img {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    top: 45px;
+    left: 97px;
+  }
+  
+  .home-page-logged-out .text-wrapper {
+    position: absolute;
+    width: 223px;
+    height: 60px;
+    top: 174px;
+    left: 38px;
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .home-page-logged-out .overlap {
+    background-color: #ffcb6b;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+  }
+  
+  .home-page-logged-out .person-add-alt {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    top: 45px;
+    left: 98px;
+  }
+  
+  .home-page-logged-out .overlap-wrapper {
+    position: relative;
+    width: 302px;
+    height: 300px;
+    margin-right: -2px;
+  }
+  
+  .home-page-logged-out .overlap-2 {
+    background-color: #8869e2;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+  }
+
+
+
+.logo{ 
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    width: 252px;
+    height: 96px;
+    flex-shrink: 0;
+}
+.logo .title{
+    display: flex;
+    width: 156px;
+    height: 48px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0 0 10px 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.logo .food-bank{
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hidden{
+    display: none;
+}
+.header-frame{
+    position: fixed;
+    width: 100%;
+    border-radius: 0px 0px 50px 50px;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 244, 223, 0.50);
+}
+.head-layout{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px 15px 30px;
+}
+.nevigation{
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+}
+.nevigation .active{
+    font-weight: 700;
+}
