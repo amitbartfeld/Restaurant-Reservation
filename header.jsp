@@ -29,23 +29,30 @@
 <body style="margin: 0; padding: 0;">
     <div class="header-frame">
         <div class="head-layout">
+            <!-- \/ SWITCH TO HOME URL \/ -->
+            <a href="Home.jsp">
             <div class="logo">
                 <img class="food-bank" src="img/Food-bank.svg" />
                 <div class="title">Restaurant Reservation</div>
             </div>
+            </a>
             <div class="nevigation">
                 <span id="home">
-                    <a> Home </a>  •
+                    <!-- \/ SWITCH TO HOME URL \/ -->
+                    <a href="Home.jsp"> Home </a>  •
                 </span>
                 <span id="reservation">
-                    View Reservations  •  
+                    <!-- \/ SWITCH TO RESERVATION URL \/ -->
+                   <a href="Reservations.jsp"> View Reservations </a>  •  
                 </span>
                 <span id="edit">
-                    Edit Profile  •
+                    <!-- \/ SWITCH TO EDIT URL \/ -->
+                    <a href="Edit.jsp"> Edit Profile </a>  •
                 </span>
-                <span style="color: rgba(189, 44, 44, 1);">
+                <!-- \/ SWITCH TO LOGOUT URL \/ -->
+                <a href="Logout.jsp" style="color: rgba(189, 44, 44, 1);">
                     Logout
-                </span>
+                </a>
             </div>
         </div>
     </div>
