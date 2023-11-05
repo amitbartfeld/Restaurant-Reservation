@@ -13,22 +13,26 @@ import java.util.logging.Logger;
 
 public class DatabaseOperationsSingleton {
     private static final String databaseURL = "jdbc:derby://localhost:1527/project";
-    private final String tableName;
-    private final static DatabaseOperationsSingleton instance = null;
+    private String tableName;
+    private static DatabaseOperationsSingleton instance = null;
     private Connection connection;
     
-    private DatabaseOperationsSingleton(String tableName) {
-        this.tableName = tableName;
+    private DatabaseOperationsSingleton() {
         try {
             connection = connectToDatabase();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DatabaseOperationsSingleton.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
     
     public static DatabaseOperationsSingleton getInstance(String tableName) {
         if (instance == null)
-            return new DatabaseOperationsSingleton(tableName);
+            instance = new DatabaseOperationsSingleton();
+        instance.setTableName(tableName);
         return instance;
     }
     

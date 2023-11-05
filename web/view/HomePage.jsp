@@ -24,8 +24,14 @@
     </form>
     <div class="center">
         <div class="RestaurantContainer">
+            <p>Featured Restaurants:</p><div></div>
+            <!-- Switch this line with a grid of RestaurantCards -->
             <p>Featured Restaurants:</p>
             <div class="grid">
+            <%
+                request.setAttribute("restaurantName", "Papa Joe");
+                request.setAttribute("location", "Mama Joe");
+            %>
             <jsp:include page="RestaurantCard.jsp" />
             </div>
         </div>
