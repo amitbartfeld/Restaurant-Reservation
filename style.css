@@ -294,7 +294,7 @@ button {
   background: #FFF;
 }
 
-.rname {
+.card .rname {
   color: #000;
   text-align: center;
   font-family: Inter;
@@ -310,7 +310,7 @@ button {
   flex-shrink: 0;
 }
 
-.rloc {
+.card .rloc {
   display: flex;
   width: 361px;
   height: 30px;
@@ -324,4 +324,39 @@ button {
   font-style: normal;
   font-weight: 100;
   line-height: normal;
+}
+
+
+/* Restaurant Page */
+.page .rname {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 700;
+  margin: 25px 0 0 0;
+}
+.page .rloc {
+  text-align: center;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+}
+.page .rday {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+.page .rday .rhour {
+  font-weight: 700;
+}
+.page .formcard {
+  width: 380px;
+  height: 330px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  border: 2px solid #000;
+  background: #FFF;
 }

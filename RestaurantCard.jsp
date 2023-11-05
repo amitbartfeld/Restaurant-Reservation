@@ -16,7 +16,8 @@
             <p class="rname" id="rname">Restaurant Name</p>
             <p class="rloc" id="rloc">-- Location --</p>
             <!-- Change the button's text to "🍽️ View Restaurant" as written on the text prop -->
-            <button type="submit" onclick="changeClick(id)" id="name"><jsp:include page="button.jsp" text="🍽️ View Restaurant" /></button>
+            <!-- Make sure that the button opens the restaurant page for the currect restaurant, the id is openRestaurant, might need to be changed -->
+            <button type="submit" onclick="changeClick(id)" id="openRestaurant"><jsp:include page="button.jsp" text="🍽️ View Restaurant" /></button>
         </div>
   <input type="hidden" name="action" id="update" />
     </form>    
