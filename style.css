@@ -15,7 +15,10 @@ a.nevigation:hover{
     justify-content: center;
     width: 100%;
 }
-
+button{
+  background: none;
+  border: none;
+}
 .home-page-logged-out .div {
   background-color: #ffffff;
   width: 100%;
