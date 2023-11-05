@@ -17,7 +17,7 @@
     </script>
 </head>
 <body>
-    <p class="helloTitle">Hello <span class="name">User</span>! <img id="details" src="img/edit.svg" /></p>
+    <p class="helloTitle">Hello <span class="name">User</span>! <a href="editRestaurant.jsp"><img id="details" src="img/edit.svg" /></a></p>
     
 </body>
 </html>
