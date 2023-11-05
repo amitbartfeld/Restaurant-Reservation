@@ -50,7 +50,7 @@ button {
 
 .home-page-logged-out .buttons-grid {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: row;
   min-width: 60%;
   max-width: 100%;
