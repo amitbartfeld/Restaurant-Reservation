@@ -1,3 +1,10 @@
+<%-- 
+    Document   : RestaurantCard
+    Created on : Nov 5, 2023, 7:28:31 PM
+    Author     : admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +22,9 @@
         <div class="card">
             <p class="rname" id="rname">Restaurant Name</p>
             <p class="rloc" id="rloc">-- Location --</p>
-            <!-- Change the button's text to "🍽️ View Restaurant" as written on the text prop -->
             <!-- Make sure that the button opens the restaurant page for the currect restaurant, the id is openRestaurant, might need to be changed -->
-            <button type="submit" onclick="changeClick(id)" id="openRestaurant"><jsp:include page="button.jsp" text="🍽️ View Restaurant" /></button>
+            <%request.setAttribute("text", "🍽️ View Restaurant");%>
+            <button type="submit" onclick="changeClick(id)" id="openRestaurant"><jsp:include page="button.jsp" /></button>
         </div>
   <input type="hidden" name="action" id="update" />
     </form>    

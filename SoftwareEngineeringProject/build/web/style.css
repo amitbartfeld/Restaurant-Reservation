@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/* Global Styles */
+a.nevigation,
+a.nevigation:active,
+a.nevigation:visited {
+  text-decoration: none;
+  color: #000;
+  transition: 0.6s ease-in-out;
+}
+
+a.nevigation:hover {
+  text-shadow: 0.2px 0.2px 1px, -0.2px -0.2px 1px;
+  transition: 0.6s ease-in-out;
+}
+
+body,
+html {
+  font-family: Inter;
+}
+
+p {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+
+/* Home Page Logged Out */
+.home-page-logged-out {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.home-page-logged-out .div {
+  background-color: #ffffff;
+  width: 100%;
+  position: relative;
+}
+
+.home-page-logged-out .buttons-grid {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
+  min-width: 60%;
+  max-width: 100%;
+  height: 450px;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px 50px;
+}
+
+.home-page-logged-out .buttons-grid>* {
+  flex: content;
+}
+
+.home-page-logged-out .button {
+  position: relative;
+  width: 100%;
+}
+
+.home-page-logged-out .overlap-group {
+  background-color: #ffa800;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50px;
+}
+
+.home-page-logged-out .img {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  top: 45px;
+  left: 97px;
+}
+
+.home-page-logged-out .text-wrapper {
+  position: absolute;
+  width: 223px;
+  height: 60px;
+  top: 174px;
+  left: 38px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.home-page-logged-out .overlap {
+  background-color: #ffcb6b;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50px;
+}
+
+.home-page-logged-out .person-add-alt {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  top: 45px;
+  left: 98px;
+}
+
+.home-page-logged-out .overlap-wrapper {
+  position: relative;
+  width: 302px;
+  height: 300px;
+  margin-right: -2px;
+}
+
+.home-page-logged-out .overlap-2 {
+  background-color: #8869e2;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50px;
+}
+
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  width: 252px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.logo .title {
+  display: flex;
+  width: 156px;
+  height: 48px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 0 10px 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.logo .food-bank {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+/* Center */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Hidden */
+.hidden {
+  display: none;
+}
+
+/* Header */
+.header-frame {
+  position: fixed;
+  width: 100%;
+  border-radius: 0px 0px 50px 50px;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 244, 223, 0.50);
+}
+
+.head-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 15px 30px;
+}
+
+/* Navigations */
+.nevigation {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+}
+
+.nevigation .active {
+  font-weight: 700;
+}
+
+/* button */
+.buttonStyle {
+  width: fit-content;
+  height: 55px;
+  padding: 0 20px 0 20px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFE2AA;
+}
+.buttonText {
+  display: flex;
+  width: fit-content;
+  height: 55px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Hello User! */
+.helloTitle {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+}
+
+.helloTitle .name {
+  color: #000;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* Search Bar */
+.searchcontainer {
+  background: #F6F6F6;
+  margin: 0;
+  padding: 0;
+  border-radius: 50px;
+  padding-right: 65px;
+  min-width: 25%;
+  max-width: 100%;
+}
+
+.searchbar {
+  width: 100%;
+  height: 40px;
+  border-radius: 50px;
+  border: 1.5px solid #000;
+  outline: none;
+  padding: 5px 50px 5px 15px;
+  margin: 0;
+  background: url("/img/search.svg") no-repeat right 10px center;
+  background-size: 30px;
+}
+
+.searchbar:active {
+  outline: none;
+}
+
+/*home page*/
+.RestaurantContainer {
+  display: flex;
+  width: 1000px;
+}
+
+/* Restaurant Card */
+.card {
+  width: 380px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  border: 2px solid #000;
+  background: #FFF;
+}
+
+.card .rname {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  width: 361px;
+  height: 44px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card .rloc {
+  display: flex;
+  width: 361px;
+  height: 30px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+}
+
+
+/* Restaurant Page */
+.page .rname {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 700;
+  margin: 25px 0 0 0;
+}
+.page .rloc {
+  text-align: center;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+}
+.page .rday {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+.page .rday .rhour {
+  font-weight: 700;
+}
+.page .formcard {
+  width: 380px;
+  height: 330px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  border: 2px solid #000;
+  background: #FFF;
+}

@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +21,8 @@
     <form action="Controller">
         <!-- Change the button's text to "Go to Homepage" as written on the text prop -->
         <button type="submit" onclick="changeClick(id)" id="homepage">
-            <jsp:include page="button.jsp" text="Back to Homepage" />
+            <%request.setAttribute("text", "Back to Homepage");%>
+            <jsp:include page="button.jsp" />
         </button>
         <input type="hidden" name="action" id="update" />
     </form>

@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="text" class="java.lang.String" scope="request" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
 </head>
 <body>
     <div class="buttonStyle">
-        <p class="buttonText">Click Me!</p>
+        <p class="buttonText"><%=text%></p>
     </div>
 </body>
 </html>
