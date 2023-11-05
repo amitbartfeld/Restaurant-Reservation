@@ -34,7 +34,7 @@
 </head>
 
 <body style="margin: 0; padding: 0;">
-    <form action="Controller.java">
+    <form action="Controller">
         <div class="header-frame">
             <div class="head-layout">
                 <button type="submit" onclick="changeClick(this.id);" id="home">

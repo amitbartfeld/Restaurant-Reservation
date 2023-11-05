@@ -17,7 +17,7 @@
 <body class="page">
     <jsp:include page="header.jsp" />
     <jsp:include page="helloTitle.jsp" />
-    <form action="Controller.java">
+    <form action="Controller">
         <!-- Change the button's text to "Go to Homepage" as written on the text prop -->
         <button type="submit" onclick="changeClick(id)" id="homepage">
             <jsp:include page="button.jsp" text="Back to Homepage" />
@@ -39,7 +39,7 @@
     </p>
     <div class="center">
         <div class="formcard">
-            
+
         </div>
     </div>
 </body>

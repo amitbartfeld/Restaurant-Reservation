@@ -11,7 +11,7 @@
 <body>
     <jsp:include page="header.jsp" />
     <jsp:include page="helloTitle.jsp" />
-    <form action="Controller.java">
+    <form action="Controller">
         <jsp:include page="searchBar.jsp" />
   <input type="hidden" name="action" id="update" />
     </form>

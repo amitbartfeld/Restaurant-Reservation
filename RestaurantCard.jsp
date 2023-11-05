@@ -11,7 +11,7 @@
     </script>
 </head>
 <body>
-    <form action="Controller.java">
+    <form action="Controller">
         <div class="card">
             <p class="rname" id="rname">Restaurant Name</p>
             <p class="rloc" id="rloc">-- Location --</p>

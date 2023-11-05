@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <form action="Controller.java">
+  <form action="Controller">
   <div class="home-page-logged-out">
     <div class="div">
       <div class="center">
