@@ -45,7 +45,7 @@
                     <div class="head-layout">
                         <button type="submit" onclick="changeClick(this.id);" id="home">
                             <div class="logo">
-                                <img class="food-bank" src="img/Food-bank.svg" />
+                                <img class="food-bank" src="img/food-bank.svg" />
                                 <div class="title">Restaurant Reservation</div>
                             </div>
                         </button>

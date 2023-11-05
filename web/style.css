@@ -282,9 +282,19 @@ button {
 
 /*home page*/
 .RestaurantContainer {
-  display: flex;
+  /* display: flex; */
   width: 1000px;
 }
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  flex-direction: column;
+  /* grid-gap: 20px; */
+  width: 100%;
+  margin: 0 -25px;
+  padding: 0;
+}
+
 
 /* Restaurant Card */
 .card {
@@ -295,7 +305,8 @@ button {
   border: 2px solid #000;
   background: #FFF;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
+  margin: 5px 5px 5px 5px;
 }
 
 .card .rname {
