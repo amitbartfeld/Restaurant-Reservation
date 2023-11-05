@@ -31,7 +31,7 @@
                 <img class="img" src="img/person.svg" />
                 <div class="text-wrapper">Login</div>
               </div>
-            </a>
+            </button>
           </div>
           <div class="button">
             <button type="submit" onclick="changeClick(this.id);" id="signup">
@@ -39,7 +39,7 @@
                 <img class="person-add-alt" src="img/person-add-alt-1.svg" />
                 <div class="text-wrapper">Signup</div>
               </div>
-            </a>
+            </button>
           </div>
           <div class="overlap-wrapper">
             <button type="submit" onclick="changeClick(this.id);" id="restaurantsignup">
@@ -47,7 +47,7 @@
                 <div class="text-wrapper">Signup as Restaurant</div>
                 <img class="img" src="img/restaurant.svg" />
               </div>
-            </a>
+            </button>
           </div>
         </div>
       </div>
