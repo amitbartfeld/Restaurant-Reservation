@@ -16,13 +16,13 @@
 </head>
 
 <body class="page">
-    <jsp:include page="header.jsp" />
-    <jsp:include page="helloTitle.jsp" />
+    <jsp:include page="Header.jsp" />
+    <jsp:include page="HelloTitle.jsp" />
     <form action="Controller">
         <!-- Change the button's text to "Go to Homepage" as written on the text prop -->
         <button type="submit" onclick="changeClick(id)" id="homepage">
             <%request.setAttribute("text", "Back to Homepage");%>
-            <jsp:include page="button.jsp" />
+            <jsp:include page="Button.jsp" />
         </button>
         <input type="hidden" name="action" id="update" />
     </form>

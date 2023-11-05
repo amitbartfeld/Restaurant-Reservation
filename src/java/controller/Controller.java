@@ -27,9 +27,9 @@ public class Controller extends HttpServlet {
         switch(action) {
             case "login":
                 request.setAttribute("isClient", true);
-                request.setAttribute("page", "home");
+                request.setAttribute("pageName", "home");
                 request.setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
-                transferToPage("view/HomePage.jsp", request, response);
+                transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
             case "signup":
                 

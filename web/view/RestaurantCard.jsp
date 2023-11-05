@@ -26,7 +26,7 @@
             <p class="rloc" id="rloc"><%=location%></p>
             <!-- Make sure that the button opens the restaurant page for the currect restaurant, the id is openRestaurant, might need to be changed -->
             <%request.setAttribute("text", "🍽️ View Restaurant");%>
-            <button type="submit" onclick="changeClick(id)" id="openRestaurant"><jsp:include page="button.jsp" /></button>
+            <button type="submit" onclick="changeClick(id)" id="openRestaurant"><jsp:include page="Button.jsp" /></button>
         </div>
   <input type="hidden" name="action" id="update" />
     </form>    
