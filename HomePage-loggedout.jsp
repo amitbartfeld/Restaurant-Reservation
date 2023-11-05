@@ -39,9 +39,9 @@
           </div>
           <div class="overlap-wrapper">
             <!-- \/ SWITCH TO BROWSE/HOME URL \/ -->
-            <a href="Home.jsp">
+            <a href="RestaurantSignup.jsp">
               <div class="overlap-2">
-                <div class="text-wrapper">Browse Restaurants</div>
+                <div class="text-wrapper">Signup as Restaurant</div>
                 <img class="img" src="img/restaurant.svg" />
               </div>
             </a>
