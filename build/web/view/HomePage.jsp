@@ -24,7 +24,7 @@
     </form>
     <div class="center">
         <div class="RestaurantContainer">
-            <p>Featured Restaurants:</p>
+            <p>Featured Restaurants:</p><div></div>
             <!-- Switch this line with a grid of RestaurantCards -->
             <jsp:include page="RestaurantCard.jsp" />
         </div>
