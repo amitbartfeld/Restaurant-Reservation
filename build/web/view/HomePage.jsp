@@ -26,6 +26,10 @@
         <div class="RestaurantContainer">
             <p>Featured Restaurants:</p><div></div>
             <!-- Switch this line with a grid of RestaurantCards -->
+            <%
+                request.setAttribute("restaurantName", "Papa Joe");
+                request.setAttribute("location", "Mama Joe");
+            %>
             <jsp:include page="RestaurantCard.jsp" />
         </div>
     </div>
