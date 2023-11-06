@@ -48,17 +48,17 @@ public class Controller extends HttpServlet {
                 String password = request.getParameter("password");
                 if (DatabaseOperationsSingleton.getInstance(Constants.clientTable).getSpecificRowByUniqueColumn(Constants.clientUserNameField, username) != null) {
                     if (AuthenticationLogic.login(username, password, false, request.getSession())) {
-                        request.setAttribute("pageName", "reservations");
-                        transferToPage("view/ViewReservations.jsp", request, response);
+                        request.setAttribute("pageName", "home");
+                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
+                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                     } else {
                         request.setAttribute("message", "Wrong password");
                         transferToPage("view/Login.jsp", request, response);
                     }
                 } else if (DatabaseOperationsSingleton.getInstance(Constants.restaurantTable).getSpecificRowByUniqueColumn(Constants.restaurantUserNameField, username) != null) {
                     if (AuthenticationLogic.login(username, password, true, request.getSession())) {
-                        request.setAttribute("pageName", "home");
-                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
-                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                        request.setAttribute("pageName", "reservations");
+                        transferToPage("view/ViewReservations.jsp", request, response);
                     } else {
                         request.setAttribute("message", "Wrong password");
                         transferToPage("view/Login.jsp", request, response);
@@ -84,8 +84,9 @@ public class Controller extends HttpServlet {
                     String phone = request.getParameter("phone");
                     String email = request.getParameter("email");
                     if (AuthenticationLogic.registerClient(username, email, phone, password, request.getSession())) {
-                        request.setAttribute("pageName", "reservations");
-                        transferToPage("view/ViewReservations.jsp", request, response);
+                        request.setAttribute("pageName", "home");
+                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
+                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                     } else {
                         request.setAttribute("message", "User already exists");
                         transferToPage("view/Signup.jsp", request, response);
@@ -101,7 +102,7 @@ public class Controller extends HttpServlet {
                     String password = request.getParameter("password");
                     String phone = request.getParameter("phone");
                     String email = request.getParameter("email");
-                    String name = request.getParameter("name");
+                    String name = request.getParameter("restaurantName");
                     String location = request.getParameter("location");
                     int sundayO = Integer.parseInt(request.getParameter("sundayO").split(":")[0]);
                     int sundayC = Integer.parseInt(request.getParameter("sundayC").split(":")[0]);
@@ -120,9 +121,8 @@ public class Controller extends HttpServlet {
                     int[] startingHours = new int[]{sundayO, mondayO, tuesdayO, wednesdayO, thursdayO, fridayO, saturdayO};
                     int[] endingHours = new int[]{sundayC, mondayC, tuesdayC, wednesdayC, thursdayC, fridayC, saturdayC};
                     if (AuthenticationLogic.registerRestaurant(username, password, name, phone, email, startingHours, endingHours, location, request.getSession())) {
-                        request.setAttribute("pageName", "home");
-                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
-                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                        request.setAttribute("pageName", "reservations");
+                        transferToPage("view/ViewReservations.jsp", request, response);
                     } else {
                         request.setAttribute("message", "User already exists");
                         transferToPage("view/RestaurantSignup.jsp", request, response);

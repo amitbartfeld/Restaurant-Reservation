@@ -23,7 +23,6 @@
             <p>Last Reservations:</p>
             <div></div>
             <div class="grid">
-                <% request.setAttribute("reservation", new Reservation("abc", 12, 1234567654, true)); %>
                     <jsp:include page="ClientReservationView.jsp" />
             </div>
             <p>Reservations History:</p>

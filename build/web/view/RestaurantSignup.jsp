@@ -170,7 +170,7 @@
                                 <div class="center">
                                     <% request.setAttribute("text", "Signup" ); request.setAttribute("isActive", false);
                                         request.setAttribute("isRed", false); %>
-                                        <button type="submit" onclick="changeClick(this.id);" id="signup">
+                                        <button type="submit" onclick="changeClick(this.id);" id="restaurantsignup">
                                             <jsp:include page="Button.jsp" />
                                         </button>
                                 </div>

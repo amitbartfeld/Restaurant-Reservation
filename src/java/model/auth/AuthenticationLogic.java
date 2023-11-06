@@ -33,12 +33,12 @@ public class AuthenticationLogic {
         return false;
     }
     
-    public static boolean registerRestaurant(String username, String password, String name, String phone, String email, int[] startingHours, int[] endingHours, String location, String website, HttpSession session) {
+    public static boolean registerRestaurant(String username, String password, String name, String phone, String email, int[] startingHours, int[] endingHours, String location, HttpSession session) {
         try {
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.restaurantTable);
             Object[] row = databaseOperations.getSpecificRowByUniqueColumn(Constants.restaurantUserNameField, username);
             if (row == null) {
-                databaseOperations.insertDataToSql(new Object[]{username, password, name, phone, email, new OpeningHours(startingHours, endingHours).toString(), location, website});
+                databaseOperations.insertDataToSql(new Object[]{username, password, name, phone, email, new OpeningHours(startingHours, endingHours).toString(), location});
                 session.setAttribute("user", new DatabaseRestaurantCreator().create(username));
                 session.setAttribute("isClient", false);
                 return true;
