@@ -20,6 +20,7 @@ import model.Constants;
 import model.DatabaseOperationsSingleton;
 import model.SearchRestaurantLogic;
 import model.UserDetailsChanger;
+import model.auth.AuthenticationLogic;
 import model.auth.DatabaseClientCreator;
 import model.auth.DatabaseRestaurantCreator;
 import model.auth.RegisteredClient;
@@ -46,24 +47,18 @@ public class Controller extends HttpServlet {
             try {
                 String password = request.getParameter("password");
                 if (DatabaseOperationsSingleton.getInstance(Constants.clientTable).getSpecificRowByUniqueColumn(Constants.clientUserNameField, username) != null) {
-                    RegisteredClient client = new DatabaseClientCreator().create(username);
-                    if (client.getPassword().equals(password)) {
-                        request.getSession().setAttribute("user", new UserDetails(username, client.getDetails().email, client.getDetails().phone));
-                        request.getSession().setAttribute("isClient", true);
-                        request.setAttribute("pageName", "home");
-                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
-                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                    if (AuthenticationLogic.login(username, password, false, request.getSession())) {
+                        request.setAttribute("pageName", "reservations");
+                        transferToPage("view/ViewReservations.jsp", request, response);
                     } else {
                         request.setAttribute("message", "Wrong password");
                         transferToPage("view/Login.jsp", request, response);
                     }
                 } else if (DatabaseOperationsSingleton.getInstance(Constants.restaurantTable).getSpecificRowByUniqueColumn(Constants.restaurantUserNameField, username) != null) {
-                    RegisteredRestaurant restaurant = new DatabaseRestaurantCreator().create(username);
-                    if (restaurant.getPassword().equals(password)) {
-                        request.getSession().setAttribute("user", new UserDetails(username, restaurant.getDetails().email, restaurant.getDetails().phone));
-                        request.getSession().setAttribute("isClient", false);
-                        request.setAttribute("pageName", "reservations");
-                        transferToPage("view/ViewReservations.jsp", request, response);
+                    if (AuthenticationLogic.login(username, password, true, request.getSession())) {
+                        request.setAttribute("pageName", "home");
+                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
+                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                     } else {
                         request.setAttribute("message", "Wrong password");
                         transferToPage("view/Login.jsp", request, response);
@@ -80,11 +75,41 @@ public class Controller extends HttpServlet {
                 }
                 break;
             case "signup":
-                request.setAttribute("pageName", "reservations");
-                transferToPage("view/ViewReservations.jsp", request, response);
-                break;
+                request.setAttribute("message", "");
+                username = request.getParameter("username");
+                if (username == null)
+                    transferToPage("view/Signup.jsp", request, response);
+                else {
+                    String password = request.getParameter("password");
+                    String phone = request.getParameter("phone");
+                    String email = request.getParameter("email");
+                    if (AuthenticationLogic.registerClient(username, email, phone, password, request.getSession())) {
+                        request.setAttribute("pageName", "reservations");
+                        transferToPage("view/ViewReservations.jsp", request, response);
+                    } else {
+                        request.setAttribute("message", "User already exists");
+                        transferToPage("view/Signup.jsp", request, response);
+                    }
+                }
+            break;
             case "restaurantsignup":
-                
+                request.setAttribute("message", "");
+                username = request.getParameter("username");
+                if (username == null)
+                    transferToPage("view/RestaurantSignup.jsp", request, response);
+                else {
+                    String password = request.getParameter("password");
+                    String phone = request.getParameter("phone");
+                    String email = request.getParameter("email");
+                    if (AuthenticationLogic.registerClient(username, email, phone, password, request.getSession())) {
+                        request.setAttribute("pageName", "home");
+                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
+                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                    } else {
+                        request.setAttribute("message", "User already exists");
+                        transferToPage("view/RestaurantSignup.jsp", request, response);
+                    }
+                }
                 break;
             case "restaurant":
                 request.setAttribute("pageName", "home");

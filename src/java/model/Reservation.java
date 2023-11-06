@@ -16,12 +16,14 @@ import model.auth.DatabaseRestaurantCreator;
  */
 public class Reservation {
     private final String restaurantUserName;
+    private final String clientUserName;
     private final int numOfPeople;
     private final long reservationTime;
     private boolean isRelevant;
 
-    public Reservation(String restaurantUserName, int numOfPeople, long reservationTime, boolean isRelevant) {
+    public Reservation(String restaurantUserName, String clientUserName, int numOfPeople, long reservationTime, boolean isRelevant) {
         this.restaurantUserName = restaurantUserName;
+        this.clientUserName = clientUserName;
         this.numOfPeople = numOfPeople;
         this.reservationTime = reservationTime;
         this.isRelevant = isRelevant;

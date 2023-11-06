@@ -112,9 +112,9 @@ public class DatabaseOperationsSingletonTest {
                         instance.deleteDataFromDatabaseByUniqueColumn(uniqueFields[i], username);
                         break;
                     case 2:
-                        o = new Object[]{1234543222, "abc's restaurant", "23", "true"};
+                        o = new Object[]{1234543222, "abc's restaurant", "23", "true", "abc"};
                         instance.insertDataToSql(o);
-                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true"};
+                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true", "abc"};
                         Assert.assertArrayEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222), o);
                         instance.deleteDataFromDatabaseByUniqueColumn(uniqueFields[i], 1234543222);
                         break;
@@ -155,9 +155,9 @@ public class DatabaseOperationsSingletonTest {
                         Assert.assertEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], username) == null, true);
                         break;
                     case 2:
-                        o = new Object[]{1234543222, "abc's restaurant", "23", "true"};
+                        o = new Object[]{1234543222, "abc's restaurant", "23", "true", "abc"};
                         instance.insertDataToSql(o);
-                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true"};
+                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true", "abc"};
                         Assert.assertArrayEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222), o);
                         instance.deleteDataFromDatabaseByUniqueColumn(uniqueFields[i], 1234543222);
                         Assert.assertEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222) == null, true);
@@ -201,9 +201,9 @@ public class DatabaseOperationsSingletonTest {
                         instance.deleteDataFromDatabaseByUniqueColumn(uniqueFields[i], username);
                         break;
                     case 2:
-                        o = new Object[]{1234543222, "abc's restaurant", "23", "true"};
+                        o = new Object[]{1234543222, "abc's restaurant", "23", "true", "abc"};
                         instance.insertDataToSql(o);
-                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true"};
+                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true", "abc"};
                         Assert.assertArrayEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222), o);
                         instance.updateDataInSqlByUniqueColumn(Constants.reservationIsRelevantField, "false", uniqueFields[i], 1234543222);
                         Assert.assertEquals("false", instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222)[3]);
@@ -266,13 +266,13 @@ public class DatabaseOperationsSingletonTest {
                         }
                         break;
                     case 2:
-                        o1 = new Object[]{1234543222, "abc's restaurant", "23", "true"};
+                        o1 = new Object[]{1234543222, "abc's restaurant", "23", "true", "abc"};
                         instance.insertDataToSql(o1);
-                        o1 = new Object[]{"1234543222", "abc's restaurant", "23", "true"};
+                        o1 = new Object[]{"1234543222", "abc's restaurant", "23", "true", "abc"};
                         Assert.assertArrayEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222), o1);
-                        o2 = new Object[]{1234543221, "bbb's restaurant", "20", "false"};
+                        o2 = new Object[]{1234543221, "bbb's restaurant", "20", "false", "abc"};
                         instance.insertDataToSql(o2);
-                        o2 = new Object[]{"1234543221", "bbb's restaurant", "20", "false"};
+                        o2 = new Object[]{"1234543221", "bbb's restaurant", "20", "false", "abc"};
                         Assert.assertArrayEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543221), o2);
                         newRows = instance.getAllRows();
                         for (Object[] row : newRows) {
@@ -319,9 +319,9 @@ public class DatabaseOperationsSingletonTest {
                         instance.deleteDataFromDatabaseByUniqueColumn(uniqueFields[i], username);
                         break;
                     case 2:
-                        o = new Object[]{1234543222, "abc's restaurant", "23", "true"};
+                        o = new Object[]{1234543222, "abc's restaurant", "23", "true", "abc"};
                         instance.insertDataToSql(o);
-                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true"};
+                        o = new Object[]{"1234543222", "abc's restaurant", "23", "true", "abc"};
                         Assert.assertArrayEquals(instance.getSpecificRowByUniqueColumn(uniqueFields[i], 1234543222), o);
                         instance.deleteDataFromDatabaseByUniqueColumn(uniqueFields[i], 1234543222);
                         break;

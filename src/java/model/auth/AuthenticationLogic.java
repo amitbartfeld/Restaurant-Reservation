@@ -24,6 +24,7 @@ public class AuthenticationLogic {
             if (row == null) {
                 databaseOperations.insertDataToSql(new Object[]{username, email, phone, password});
                 session.setAttribute("user", new DatabaseClientCreator().create(username));
+                session.setAttribute("isClient", true);
                 return true;
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -39,6 +40,7 @@ public class AuthenticationLogic {
             if (row == null) {
                 databaseOperations.insertDataToSql(new Object[]{username, password, name, phone, email, new OpeningHours(startingHours, endingHours).toString(), location, website});
                 session.setAttribute("user", new DatabaseRestaurantCreator().create(username));
+                session.setAttribute("isClient", false);
                 return true;
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -61,10 +63,13 @@ public class AuthenticationLogic {
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(table);
             Object[] row = databaseOperations.getSpecificRowByUniqueColumn(usernameColumnName, username);
             if (row != null) {
-                if (isRestaurant)
+                if (isRestaurant) {
+                    session.setAttribute("isClient", false);
                     session.setAttribute("user", new DatabaseRestaurantCreator().create(username));
-                else
+                } else {
+                    session.setAttribute("isClient", true);
                     session.setAttribute("user", new DatabaseClientCreator().create(username));
+                }
                 return true;
             }
         } catch (ClassNotFoundException | SQLException ex) {
