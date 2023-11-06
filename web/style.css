@@ -116,6 +116,21 @@ button {
   left: 97px;
 }
 
+.home-page-logged-out .text-wrapper {
+  position: absolute;
+  width: 223px;
+  height: 60px;
+  top: 174px;
+  left: 38px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
 .home-paget, .texlogged-out  {
   position: absolute;
   width: 223px;
