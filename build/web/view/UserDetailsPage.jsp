@@ -2,6 +2,7 @@
 
   <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <jsp:useBean id="subPage" class="java.lang.String" scope="request" />
+    <jsp:useBean id="user" scope="session" class="model.auth.UserDetails"/>
     <!DOCTYPE html>
     <html>
 
@@ -25,7 +26,7 @@
             pasrepeat.css("border-color", "red");
             $("#updatePassword").prop("disabled", true);
           }
-        }
+        };
         password.on("input", inputHandler);
         password.on("propertychange", inputHandler);
         pasrepeat.on("input", inputHandler);
@@ -41,37 +42,34 @@
       <!-- Sub Menu -->
       <form action="Controller">
         <!-- Password menu item - will be active if subPage == "password" -->
-        <% request.setAttribute("text", "🔑 Change Password" ); request.setAttribute("isActive",
-          !subPage.equals("password")); request.setAttribute("isRed", false); %>
+
           <button type="submit" onclick="changeClick(this.id);" id="password">
+                      <% request.setAttribute("text", "🔑 Change Password" ); request.setAttribute("isActive",
+          !subPage.equals("password")); request.setAttribute("isRed", false); request.setAttribute("buttonName", "passwordButton"); %>
             <jsp:include page="Button.jsp" />
           </button>
           <!-- Phone menu item - will be active if subPage == "phone" -->
-          <% request.setAttribute("text", "📞 Change Phone Number" ); request.setAttribute("isActive",
-            !subPage.equals("phone")); request.setAttribute("isRed", false); %>
             <button type="submit" onclick="changeClick(this.id);" id="phone">
+            <% request.setAttribute("text", "📞 Change Phone Number" ); request.setAttribute("isActive",
+            !subPage.equals("phone")); request.setAttribute("isRed", false); System.out.println("phone"); request.setAttribute("buttonName", "phoneButton"); %>
               <jsp:include page="Button.jsp" />
             </button>
             <!-- Email menu item - will be active if subPage == "email" -->
-            <% request.setAttribute("text", "✉️ Change Email Address" ); request.setAttribute("isActive",
-              !subPage.equals("email")); request.setAttribute("isRed", false); %>
+            
               <button type="submit" onclick="changeClick(this.id);" id="email">
+                  <% request.setAttribute("text", "✉️ Change Email Address" ); request.setAttribute("isActive",
+              !subPage.equals("email")); request.setAttribute("isRed", false); request.setAttribute("buttonName", "emailButton"); %>
                 <jsp:include page="Button.jsp" />
               </button>
               <!-- Delete menu item - will be active if subPage == "delete" -->
-              <% request.setAttribute("text", "🗑️ Delete Account" ); request.setAttribute("isActive",
-                !subPage.equals("delete")); request.setAttribute("isRed", true); %>
                 <button type="submit" onclick="changeClick(this.id);" id="delete">
+                    <% request.setAttribute("text", "🗑️ Delete Account" ); request.setAttribute("isActive",
+                !subPage.equals("delete")); request.setAttribute("isRed", true); System.out.println("delete"); request.setAttribute("buttonName", "deleteButton"); %>
                   <jsp:include page="Button.jsp" />
                 </button>
 
 
-                <input type="hidden" name="action" id="update" />
-      </form>
-
-
       <!-- Change Password -->
-      <form action="Controller">
         <div class="center">
           <div>
             <p class="inputTitle">Type new password:</p>
@@ -90,17 +88,14 @@
               <button type="submit" onclick="changeClick(this.id);" id="updatePassword">
                 <jsp:include page="Button.jsp" />
               </button>
-              <input type="hidden" name="action" id="update" />
           </div>
         </div>
-      </form>
 
       <!-- Change Phone Number -->
-      <form action="Controller">
         <div class="center">
           <div>
             <p>Your phone number is: <b>
-                <%=phone%>
+                <%=user.phone%>
               </b></p>
             <p class="inputTitle">Type new phone number:</p>
             <% request.setAttribute("placeholder", "Enter a new phone number" );
@@ -112,18 +107,15 @@
                 <button type="submit" onclick="changeClick(this.id);" id="updatePhone">
                   <jsp:include page="Button.jsp" />
                 </button>
-                <input type="hidden" name="action" id="update" />
               </div>
           </div>
         </div>
-      </form>
 
       <!-- Change Email -->
-      <form action="Controller">
         <div class="center">
           <div>
             <p>Your email address is: <b>
-                <%=email%>
+                <%=user.email%>
               </b></p>
             <p class="inputTitle">Type new email address:</p>
             <% request.setAttribute("placeholder", "Enter a new email address" );
@@ -135,14 +127,12 @@
                 <button type="submit" onclick="changeClick(this.id);" id="updateEmail">
                   <jsp:include page="Button.jsp" />
                 </button>
-                <input type="hidden" name="action" id="update" />
               </div>
           </div>
         </div>
-      </form>
 
       <!-- Delete Account -->
-
+    </form>
 
     </body>
 

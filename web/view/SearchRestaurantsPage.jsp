@@ -10,6 +10,7 @@
 <%@page import="model.DatabaseOperationsSingleton"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="restaurants" class="model.auth.RestaurantDetails[]" scope="request" />
+<jsp:useBean id="user" scope="session" class="model.auth.UserDetails"/>
 <!DOCTYPE html>
 <html lang="en">
 

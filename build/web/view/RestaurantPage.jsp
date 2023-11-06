@@ -2,6 +2,8 @@
 <jsp:useBean id="restaurantName" class="java.lang.String" scope="session" />
 <jsp:useBean id="location" class="java.lang.String" scope="session" />
 <jsp:useBean id="hours" class="model.OpeningHours" scope="session" />
+<jsp:useBean id="user" scope="session" class="model.auth.UserDetails"/>
+
 <!DOCTYPE html>
 <html lang="en">
 

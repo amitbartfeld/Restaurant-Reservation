@@ -46,16 +46,17 @@ public class Controller extends HttpServlet {
             case "signup":
                 request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "reservations");
-                request.setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
                 transferToPage("view/ViewReservations.jsp", request, response);
                 break;
             case "restaurantsignup":
-                
+                request.setAttribute("isClient", true);
+                request.setAttribute("pageName", "edit");
+                request.setAttribute("subPage", "password");
+                transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
             case "restaurant":
                 request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "home");
-                request.setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
                 transferToPage("view/RestaurantPage.jsp", request, response);
                 break;
             case "search":
@@ -88,6 +89,9 @@ public class Controller extends HttpServlet {
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                request.setAttribute("isClient", true);
+                request.setAttribute("pageName", "reservations");
+                transferToPage("view/ViewReservations.jsp", request, response);
                 break;
 
         }
