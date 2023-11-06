@@ -423,3 +423,23 @@ input[type=date] {
 input[type=date]:active {
   outline: none;
 }
+/* Time Field */
+input[type=time] {
+  width: 100%;
+  height: 40px;
+  border-radius: 50px;
+  border: 1px solid #000;
+  outline: none;
+  padding: 5px 15px 5px 15px;
+  margin: 0;
+  background-size: 30px;
+  background: #F6F6F6;
+  text-align: center;
+  font-family: Inter;
+}
+input[type=time]:active {
+  outline: none;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}

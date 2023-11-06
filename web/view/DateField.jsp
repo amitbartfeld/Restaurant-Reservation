@@ -12,6 +12,6 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <input type="date" name="date"/>
+        <input type="date" name="date" />
     </body>
 </html>
