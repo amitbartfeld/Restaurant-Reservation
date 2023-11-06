@@ -21,17 +21,6 @@
             <p class="rloc" id="rloc">
                 <jsp:getProperty name="reservation" property="numOfPeople" /> people
             </p>
-                <!-- Make the button click call the resturant (you can use "tel:") -->
-                <form action="tel:<jsp:getProperty name="reservation" property="restaurantPhone" />">
-                <button type="submit">
-                    <%
-                        request.setAttribute("text", "📞 Ask to cancel" );
-                        request.setAttribute("isActive", false);
-                        request.setAttribute("isRed", false);
-                    %>
-                    <jsp:include page="Button.jsp" />
-                </button>
-                </form>
         </div>
     </body>
 

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="isClient" scope="request" class="java.lang.Boolean"/>
-<jsp:useBean id="user" scope="request" class="model.auth.UserDetails"/>
+<jsp:useBean id="user" scope="session" class="model.auth.UserDetails"/>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -15,7 +15,7 @@
                 integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script>
-                var page = "<=%pageName%>";
+                var page = "<%=pageName%>";
                 var isClient = <%=isClient%>; //change this variable to false if logged in as restaurant
                 $(document).ready(function () {
                     if (!isClient) {
@@ -24,8 +24,8 @@
                     if (page === "home") {
                         $(".home").addClass("active");
                     }
-                    if (page === "reservation") {
-                        $(".reservation").addClass("active");
+                    if (page === "reservations") {
+                        $(".reservations").addClass("active");
                     }
                     if (page === "edit" || page === "password" || page === "phone" || page === "email" || page === "delete") {
                         $(".edit").addClass("active");
