@@ -12,13 +12,18 @@
             function changeClick(id) {
                 document.getElementById("update").value = id;
             }
-        </script>
+            $(document).ready(function(){
+                $("#search").prop("disabled", true);
+                $("#search").prop("placeholder", "To search for a Reservation use ctrl+f...");
+            });
+            </script>
     </head>
 
     <body>
         <form action='Controller'>
         <jsp:include page="Header.jsp" />
         <jsp:include page="HelloTitle.jsp" />
+        <jsp:include page="SearchBar.jsp" />
         <div class="RestaurantContainer">
             <p>Last Reservations:</p>
             <div></div>

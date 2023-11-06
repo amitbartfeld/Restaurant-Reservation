@@ -28,7 +28,7 @@
             <p class="rloc" id="rloc">
             <jsp:getProperty name="reservation" property="email" /> • <jsp:getProperty name="reservation" property="phone" /> 
         </p>
-            <form action="Controller" />">
+            <form action="Controller">
                 <!-- Cancel the reservation (move to history) -->
                 <button type="submit" onclick="changeClick(id)" id="cancel">
                     <%

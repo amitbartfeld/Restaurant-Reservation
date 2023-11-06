@@ -47,6 +47,11 @@
                         $("#signup").prop("disabled", false);
                     }
                 });
+                jQuery(document).on('focus click', 'input',  function(e){
+                    if ($("#username").val() === "" || $("#phone").val() === "" || $("#email").val() === "" || $("#password").val() === "" || $("#repeatPassword").val() === "") {
+                        $("#signup").prop("disabled", true);
+                    }
+                });
             });
 
         </script>
@@ -99,7 +104,7 @@
                             <% request.setAttribute("text", "Signup" );
                                 request.setAttribute("isActive", false);
                                 request.setAttribute("isRed", false); %>
-                                <button type="submit" onclick="changeClick(this.id);" id="signup">
+                                <button type="submit" onclick="changeClick(this.id);" id="signup" disabled="true">
                                     <jsp:include page="Button.jsp" />
                                 </button>
                         </div>
