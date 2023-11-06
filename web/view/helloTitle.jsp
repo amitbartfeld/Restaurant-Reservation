@@ -1,5 +1,5 @@
 <%-- 
-    Document   : helloTitle
+    Document   : HelloTitle
     Created on : Nov 5, 2023, 3:18:19 PM
     Author     : admin
 --%>
@@ -24,10 +24,15 @@
             }
             $(".name").html(username);
         });
+        function changeClick(id) {
+                    document.getElementById("update").value = id;
+        }
     </script>
 </head>
 <body>
-    <p class="helloTitle">Hello <span class="name">User</span>! <img id="details" src="img/edit.svg" /></p>
-    
+    <form action="Controller">
+    <p class="helloTitle">Hello <span class="name">User</span>! <button type="submit" onclick="changeClick(this.id);" id="edit" class="edit"><img id="details" src="img/edit.svg" /> </button></p>
+    <input type="hidden" name="action" id="update" />
+    </form>
 </body>
 </html>

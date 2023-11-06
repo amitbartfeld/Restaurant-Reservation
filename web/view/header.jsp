@@ -57,7 +57,7 @@
                                 </button> •
                             </span>
                             <span id="edit">
-                                <button type="submit" onclick="changeClick(this.id);" id="edit" class="edit"> Edit Profile </button>
+                                <button type="submit" onclick="changeClick(this.id);" id="password" class="edit"> Edit Profile </button>
                                 •
                             </span>
                             <button type="submit" onclick="changeClick(this.id);" id="logout" class="logout">

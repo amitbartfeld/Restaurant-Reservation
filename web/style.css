@@ -408,6 +408,7 @@ input[type=text].text::placeholder{
   border-radius: 30px;
   border: 2px solid #000;
   background: #FFF;
+  padding: 10px 25px;
 }
 
 
