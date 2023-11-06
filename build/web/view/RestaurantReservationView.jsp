@@ -28,9 +28,8 @@
             <p class="rloc" id="rloc">
             <jsp:getProperty name="reservation" property="email" /> • <jsp:getProperty name="reservation" property="phone" /> 
         </p>
-            <form action="Controller">
                 <!-- Cancel the reservation (move to history) -->
-                <button type="submit" onclick="changeClick(id)" id="cancel">
+                <button type="submit" onclick="changeClick(id); document.getElementById('res').value='<%=reservation.getTime()%>';" id="cancel">
                     <%
                         request.setAttribute("text", "🗑️ Cancel" );
                         request.setAttribute("isActive", false);
@@ -38,9 +37,7 @@
                     %>
                     <jsp:include page="Button.jsp" />
                 </button>
-                <input type="hidden" name="action" id="update" />
 
-                </form>
         </div>
     </body>
 
