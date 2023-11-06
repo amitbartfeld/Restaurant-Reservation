@@ -101,7 +101,7 @@ public class Controller extends HttpServlet {
                     String password = request.getParameter("password");
                     String phone = request.getParameter("phone");
                     String email = request.getParameter("email");
-                    if (AuthenticationLogic.registerClient(username, email, phone, password, request.getSession())) {
+                    if (AuthenticationLogic.registerRestaurant(username, email, phone, password, request.getSession())) {
                         request.setAttribute("pageName", "home");
                         request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
                         transferToPage("view/SearchRestaurantsPage.jsp", request, response);
