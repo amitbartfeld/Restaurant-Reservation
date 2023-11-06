@@ -26,6 +26,6 @@
     </script>
 </head>
 <body>
-    <p class="helloTitle">Hello <span class="name">User</span>! <button type="submit" onclick="changeClick(this.id);" id="edit" class="edit"><img id="details" src="img/edit.svg" /> </button></p>
+    <p class="helloTitle">Hello <span class="name">User</span>! <button type="submit" onclick="changeClick(this.id);" id="editresturant" class="edit"><img id="details" src="img/edit.svg" /> </button></p>
 </body>
 </html>

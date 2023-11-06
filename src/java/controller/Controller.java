@@ -201,6 +201,39 @@ public class Controller extends HttpServlet {
                 request.setAttribute("subPage", "email");
                 transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
+            case "update":
+            // Update restaurant
+                String restaurantName = request.getParameter("restaurantName");
+                if (restaurantName != null) {
+                    String location = request.getParameter("location");
+                    int sundayO = Integer.parseInt(request.getParameter("sundayO").split(":")[0]);
+                    int sundayC = Integer.parseInt(request.getParameter("sundayC").split(":")[0]);
+                    int mondayO = Integer.parseInt(request.getParameter("mondayO").split(":")[0]);
+                    int mondayC = Integer.parseInt(request.getParameter("mondayC").split(":")[0]);
+                    int tuesdayO = Integer.parseInt(request.getParameter("tuesdayO").split(":")[0]);
+                    int tuesdayC = Integer.parseInt(request.getParameter("tuesdayC").split(":")[0]);
+                    int wednesdayO = Integer.parseInt(request.getParameter("wednesdayO").split(":")[0]);
+                    int wednesdayC = Integer.parseInt(request.getParameter("wednesdayC").split(":")[0]);
+                    int thursdayO = Integer.parseInt(request.getParameter("thursdayO").split(":")[0]);
+                    int thursdayC = Integer.parseInt(request.getParameter("thursdayC").split(":")[0]);
+                    int fridayO = Integer.parseInt(request.getParameter("fridayO").split(":")[0]);
+                    int fridayC = Integer.parseInt(request.getParameter("fridayC").split(":")[0]);
+                    int saturdayO = Integer.parseInt(request.getParameter("saturdayO").split(":")[0]);
+                    int saturdayC = Integer.parseInt(request.getParameter("saturdayC").split(":")[0]);
+                    int[] startingHours = new int[]{sundayO, mondayO, tuesdayO, wednesdayO, thursdayO, fridayO, saturdayO};
+                    int[] endingHours = new int[]{sundayC, mondayC, tuesdayC, wednesdayC, thursdayC, fridayC, saturdayC};
+                    if(location != null && startingHours != null && endingHours != null) {
+                        boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                        UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                        new RestaurantDetailsChanger(!isClient).changeOpeningHours(user.username, startingHours, endingHours, request.getSession());
+                        new RestaurantDetailsChanger(!isClient).changeLocation(user.username, location, request.getSession());
+                        new RestaurantDetailsChanger(!isClient).changeName(user.username, restaurantName, request.getSession());
+                    }
+                }
+                request.setAttribute("pageName", "edit");
+                request.setAttribute("subPage", "email");
+                transferToPage("view/UserDetailsPage.jsp", request, response);
+                break;
             case "delete":
                 request.setAttribute("pageName", "edit");
                 request.setAttribute("subPage", "delete");
@@ -214,9 +247,15 @@ public class Controller extends HttpServlet {
             case "logout":
                 request.getSession().invalidate();
                 transferToPage("view/HomePage.jsp", request, response);
+                break;
             case "reservations":
                 request.setAttribute("pageName", "reservations");
                 transferToPage("view/ViewReservations.jsp", request, response);
+                break;
+            case "editresturant":
+                request.setAttribute("pageName", "editRestaurant");
+                transferToPage("view/RestaurantEdit.jsp", request, response);
+                break;
         }
     }
     
