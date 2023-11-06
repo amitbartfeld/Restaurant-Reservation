@@ -38,7 +38,7 @@ button {
 
 
 /* Text Field */
-.text, input[type=text] {
+input.text {
   width: 100%;
   height: 40px;
   border-radius: 50px;
@@ -50,10 +50,10 @@ button {
   background: #F6F6F6;
   text-align: center;
 }
-.text, input[type=text]:active {
+input.text:active {
   outline: none;
 }
-.text, input[type=text]::placeholder{
+input.text::placeholder{
   color: #8F8F8F;
   text-align: center;
   font-family: Inter;
