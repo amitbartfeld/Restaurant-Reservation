@@ -12,7 +12,7 @@
             if (event.key === "Enter") {
                 event.preventDefault();
                 document.getElementById("update").value = "search";
-                SubmitEvent();
+                document.querySelectorAll("form")[0].submit();
             }
             
         })
