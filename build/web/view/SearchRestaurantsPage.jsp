@@ -44,6 +44,7 @@
                     request.getSession().setAttribute("restaurantName", details.name);
                     request.getSession().setAttribute("location", details.location);
                     request.getSession().setAttribute("hours", details.openingHours);
+                    request.getSession().setAttribute("restaurantUserName", details.username);
             %>
             <jsp:include page="RestaurantCard.jsp" />
             <%}%>
