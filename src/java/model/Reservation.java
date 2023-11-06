@@ -71,21 +71,6 @@ public class Reservation {
         return time;
     }
     
-    
-    
-    
-    
-    
-    
-    public void delete() {
-        try {
-            DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
-            databaseOperations.deleteDataFromDatabaseByUniqueColumn(Constants.reservationTimeField, reservationTime);
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(Reservation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     public void cancel() {
         isRelevant = false;
         DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);

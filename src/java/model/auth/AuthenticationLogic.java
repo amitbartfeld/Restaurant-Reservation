@@ -23,7 +23,7 @@ public class AuthenticationLogic {
             Object[] row = databaseOperations.getSpecificRowByUniqueColumn(Constants.clientUserNameField, username);
             if (row == null) {
                 databaseOperations.insertDataToSql(new Object[]{username, email, phone, password});
-                session.setAttribute("user", new DatabaseClientCreator().create(username));
+                session.setAttribute("user", (UserDetails)new DatabaseClientCreator().create(username).getDetails());
                 session.setAttribute("isClient", true);
                 return true;
             }
@@ -39,7 +39,7 @@ public class AuthenticationLogic {
             Object[] row = databaseOperations.getSpecificRowByUniqueColumn(Constants.restaurantUserNameField, username);
             if (row == null) {
                 databaseOperations.insertDataToSql(new Object[]{username, password, name, phone, email, new OpeningHours(startingHours, endingHours).toString(), location});
-                session.setAttribute("user", new DatabaseRestaurantCreator().create(username));
+                session.setAttribute("user", (UserDetails)new DatabaseRestaurantCreator().create(username).details);
                 session.setAttribute("isClient", false);
                 return true;
             }
@@ -65,10 +65,10 @@ public class AuthenticationLogic {
             if (row != null) {
                 if (isRestaurant) {
                     session.setAttribute("isClient", false);
-                    session.setAttribute("user", new DatabaseRestaurantCreator().create(username));
+                    session.setAttribute("user", (UserDetails)new DatabaseRestaurantCreator().create(username).details);
                 } else {
                     session.setAttribute("isClient", true);
-                    session.setAttribute("user", new DatabaseClientCreator().create(username));
+                    session.setAttribute("user", (UserDetails)new DatabaseClientCreator().create(username).getDetails());
                 }
                 return true;
             }

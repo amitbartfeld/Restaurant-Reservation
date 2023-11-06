@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Constants;
 import model.DatabaseOperationsSingleton;
+import model.Reservation;
+import model.RestaurantDetailsChanger;
 import model.SearchRestaurantLogic;
 import model.UserDetailsChanger;
 import model.auth.AuthenticationLogic;
@@ -142,6 +144,7 @@ public class Controller extends HttpServlet {
                 transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
             case "book":
+                String clientUserName = ((UserDetails)request.getSession().getAttribute("user")).username;
                 String restaurantUserName = request.getSession().getAttribute("restaurantUserName").toString();
                 String restaurantDate = request.getParameter("date");
                 String restaurantTime = request.getParameter("time");
@@ -158,7 +161,7 @@ public class Controller extends HttpServlet {
                 long time = c.getTimeInMillis();
                 DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
                 try {
-                    databaseOperations.insertDataToSql(new Object[]{time, restaurantUserName, numOfPeople, true});
+                    databaseOperations.insertDataToSql(new Object[]{System.currentTimeMillis(), restaurantUserName, clientUserName, numOfPeople, true, time});
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -223,11 +226,10 @@ public class Controller extends HttpServlet {
                     int[] startingHours = new int[]{sundayO, mondayO, tuesdayO, wednesdayO, thursdayO, fridayO, saturdayO};
                     int[] endingHours = new int[]{sundayC, mondayC, tuesdayC, wednesdayC, thursdayC, fridayC, saturdayC};
                     if(location != null && startingHours != null && endingHours != null) {
-                        boolean isClient = (boolean)request.getSession().getAttribute("isClient");
                         UserDetails user = (UserDetails)request.getSession().getAttribute("user");
-                        new RestaurantDetailsChanger(!isClient).changeOpeningHours(user.username, startingHours, endingHours, request.getSession());
-                        new RestaurantDetailsChanger(!isClient).changeLocation(user.username, location, request.getSession());
-                        new RestaurantDetailsChanger(!isClient).changeName(user.username, restaurantName, request.getSession());
+                        RestaurantDetailsChanger.changeOpeningHours(user.username, startingHours, endingHours, request.getSession());
+                        RestaurantDetailsChanger.changeLocation(user.username, location, request.getSession());
+                        RestaurantDetailsChanger.changeName(user.username, restaurantName, request.getSession());
                     }
                 }
                 request.setAttribute("pageName", "edit");
@@ -245,6 +247,16 @@ public class Controller extends HttpServlet {
                 transferToPage("view/HomePage.jsp", request, response);
                 break;
             case "cancel":
+                long reservationTime = Long.parseLong(request.getParameter("res"));
+                databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                try {
+                    Object[] row = databaseOperations.getSpecificRowByUniqueColumn(Constants.reservationTimeField, reservationTime);
+                    Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
+                    r.cancel();
+                } catch (SQLException | ClassNotFoundException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 
             case "logout":
                 request.getSession().invalidate();

@@ -49,15 +49,14 @@
                         LinkedList<Object[]> rows = databaseOperations.getAllRows();
                         for (Object[] row : rows) {
                             Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
-                            if (Boolean.parseBoolean(row[3].toString())) {
+                            if (!r.isRelevant() && r.getClientUserName().equals(user.username)) {
                                 request.setAttribute("reservation", r);
                                 %>
-                                   <jsp:include page="ClientReservationView.jsp" />
+                                   <jsp:include page="ClientOldReservationView.jsp" />
                                 <%
                             }
                         }
                     %>
-                    <jsp:include page="RestaurantReservationView.jsp" />
             </div>
             <p>Reservations History:</p>
             <div></div>
@@ -65,13 +64,30 @@
                 <!-- add old reservations here -->
                 <%
                     if ((boolean)request.getSession().getAttribute("isClient")) {
-                        
-                %>
-                <jsp:include page="OldClientReservationView.jsp" />
-                <%} else {
-                        
-                %>
-                <jsp:include page="OldRestaurantReservationView.jsp" />
+                        databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                        rows = databaseOperations.getAllRows();
+                        for (Object[] row : rows) {
+                            Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
+                            if (r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
+                                request.setAttribute("reservation", r);
+                                %>
+                                   <jsp:include page="RestaurantReservationView.jsp" />
+                                <%
+                            }
+                        }
+                    } else {
+                        databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                        rows = databaseOperations.getAllRows();
+                        for (Object[] row : rows) {
+                            Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
+                            if (!r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
+                                request.setAttribute("reservation", r);
+                                %>
+                                   <jsp:include page="RestaurantOldReservationView.jsp" />
+                                <%
+                            }
+                        }
+                    %>
             </div>
         </div>
             <input type="hidden" name="action" id="update" />
