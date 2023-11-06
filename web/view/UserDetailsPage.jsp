@@ -165,9 +165,7 @@
       <%if (subPage.equals("delete")) {%>
         <div class="center">
           <div>
-            <p class="inputTitle">Type your password to confirm deletion:</p>
-            <% request.setAttribute("placeholder", "Password" ); request.setAttribute("textFieldName", "password"
-              ); request.setAttribute("textFieldType", "password" ); %>
+            <p class="inputTitle">Are you sure you want to delete your account? (this will not cancel your active reservations!)</p>
               <jsp:include page="TextField.jsp" />
           </div>
           <div>
