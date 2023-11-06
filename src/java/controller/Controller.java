@@ -127,8 +127,12 @@ public class Controller extends HttpServlet {
                     boolean isClient = (boolean)request.getSession().getAttribute("isClient");
                     UserDetails user = (UserDetails)request.getSession().getAttribute("user");
                     new UserDetailsChanger(!isClient).deleteUser(user.username, request.getSession());
+                    transferToPage("view/HomePage.jsp", request, response);
+                } else {
+                    request.setAttribute("pageName", "edit");
+                    request.setAttribute("subPage", "delete");
+                    transferToPage("view/UserDetailsPage.jsp", request, response);
                 }
-                transferToPage("view/HomePage.jsp", request, response);
                 break;
             case "logout":
                 request.getSession().invalidate();
