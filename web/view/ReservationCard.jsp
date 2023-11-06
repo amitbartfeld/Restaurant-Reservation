@@ -14,7 +14,7 @@
         <p class="rloc" id="rloc"><jsp:getProperty name="reservation" property="numOfPeople" /> people</p>
         <%request.setAttribute("text", "📞 Ask to cancel");%>
         <!-- Make the button click call the resturant (you can use "tel:") -->
-        <a href="tel:<jsp:useBean id="reservation" class="model.Reservation" scope="request" />"><jsp:include page="Button.jsp" /></a>
+        <a href="tel:<jsp:getProperty name="reservation" property="restaurantPhone" />"><jsp:include page="Button.jsp" /></a>
     </div>
 </body>
 
