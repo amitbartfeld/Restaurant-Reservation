@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <!-- Change the title to Restaurant Name -->
-    <title>Restaurant Name</title>
+    <title><%=restaurantName%></title>
     <script>
         function changeClick(id) {
             document.getElementById("update").value = id;

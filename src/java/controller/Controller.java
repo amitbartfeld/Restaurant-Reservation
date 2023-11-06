@@ -5,6 +5,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -12,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.SearchRestaurantLogic;
+import model.auth.RestaurantDetails;
 import model.auth.UserDetails;
 
 /**
@@ -23,13 +27,11 @@ public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.getSession().setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
         String action = request.getParameter("action");
         switch(action) {
             case "login":
-                request.setAttribute("isClient", true);
-                request.setAttribute("pageName", "home");
-                request.setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
-                transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                
                 break;
             case "signup":
                 request.setAttribute("isClient", true);
@@ -38,6 +40,16 @@ public class Controller extends HttpServlet {
                 transferToPage("view/ViewReservations.jsp", request, response);
                 break;
             case "restaurantsignup":
+                
+                break;
+            case "search":
+                String search = request.getParameter("search");
+                if (search == null)
+                    search = "";
+                request.setAttribute("isClient", true);
+                request.setAttribute("pageName", "home");
+                request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
+                transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
         }
     }

@@ -9,6 +9,7 @@
 <%@page import="model.Constants"%>
 <%@page import="model.DatabaseOperationsSingleton"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="restaurants" class="model.auth.RestaurantDetails[]" scope="request" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +25,7 @@
     <jsp:include page="HelloTitle.jsp" />
     <form action="Controller">
         <jsp:include page="SearchBar.jsp" />
-        <input type="hidden" name="action" id="update" />
+        <input type="hidden" name="action" value="search" />
     </form>
     <div class="center">
         <div class="RestaurantContainer">
@@ -32,10 +33,6 @@
             <div class="grid">
                 <!-- Get data from database -->
             <%
-                String search = request.getParameter("search");
-                if (search == null)
-                search = "";
-                RestaurantDetails[] restaurants = SearchRestaurantLogic.search(search);
                 for (RestaurantDetails details : restaurants) {
                     request.setAttribute("restaurantName", details.name);
                     request.setAttribute("location", details.location);

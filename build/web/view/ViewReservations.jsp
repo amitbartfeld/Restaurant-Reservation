@@ -15,7 +15,7 @@
     <%
         request.setAttribute("reservation", new Reservation("abc", 12, 1234567654, true));
     %>
-    <jsp:include page="ReservationCard.jsp" />
+    <jsp:include page="ClientReservationView.jsp" />
 </body>
 
 </html>
