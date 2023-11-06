@@ -285,9 +285,10 @@ input.text::placeholder{
 }
 .redButton{
   background-color: #A30000;
+}
+.buttonText .redButton{
   color: white;
 }
-
 
 
 /* Hello User! */
