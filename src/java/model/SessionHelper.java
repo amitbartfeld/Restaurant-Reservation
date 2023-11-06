@@ -7,6 +7,7 @@ package model;
 import javax.servlet.http.HttpSession;
 import model.auth.DatabaseClientCreator;
 import model.auth.DatabaseRestaurantCreator;
+import model.auth.UserDetails;
 
 /**
  *
@@ -15,8 +16,8 @@ import model.auth.DatabaseRestaurantCreator;
 public class SessionHelper {
     public static void updateUserSession(String username, HttpSession session, boolean isRestaurant) {
         if (isRestaurant)
-            session.setAttribute(Constants.userSessionAttributeName, new DatabaseRestaurantCreator().create(username));
+            session.setAttribute(Constants.userSessionAttributeName, (UserDetails)new DatabaseRestaurantCreator().create(username).details);
         else
-            session.setAttribute(Constants.userSessionAttributeName, new DatabaseClientCreator().create(username));
+            session.setAttribute(Constants.userSessionAttributeName, (UserDetails)new DatabaseClientCreator().create(username).getDetails());
     }
 }

@@ -38,7 +38,7 @@ public class UserDetailsChanger {
             else
                 passwordField = Constants.clientPasswordField;
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(tableName);
-            databaseOperations.updateDataInSqlByUniqueColumn(usernameField, username, passwordField, newPassword);
+            databaseOperations.updateDataInSqlByUniqueColumn(passwordField, newPassword, usernameField, username);
             SessionHelper.updateUserSession(username, session, isRestaurant);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDetailsChanger.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,7 +53,7 @@ public class UserDetailsChanger {
             else
                 emailField = Constants.clientEmailField;
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(tableName);
-            databaseOperations.updateDataInSqlByUniqueColumn(usernameField, username, emailField, newEmail);
+            databaseOperations.updateDataInSqlByUniqueColumn(emailField, newEmail, usernameField, username);
             SessionHelper.updateUserSession(username, session, isRestaurant);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDetailsChanger.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +68,7 @@ public class UserDetailsChanger {
             else
                 phoneField = Constants.clientEmailField;
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(tableName);
-            databaseOperations.updateDataInSqlByUniqueColumn(usernameField, username, phoneField, newEmail);
+            databaseOperations.updateDataInSqlByUniqueColumn(phoneField, newEmail, usernameField, username);
             SessionHelper.updateUserSession(username, session, isRestaurant);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserDetailsChanger.class.getName()).log(Level.SEVERE, null, ex);
