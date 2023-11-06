@@ -23,7 +23,7 @@ public class SearchRestaurantLogic {
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.restaurantTable);
             LinkedList<Object[]> rows = databaseOperations.getAllRows();
             for (Object[] row : rows) {
-                if (row[6].toString().contains(text) || row[2].toString().contains(text))
+                if (row[6].toString().toLowerCase().contains(text.toLowerCase()) || row[2].toString().toLowerCase().contains(text.toLowerCase()))
                     restaurants.add(new DatabaseRestaurantCreator().create(row[0].toString()).details);
             }
             return restaurants.toArray(new RestaurantDetails[0]);

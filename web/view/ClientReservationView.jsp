@@ -1,3 +1,4 @@
+<%@page import="model.auth.DatabaseRestaurantCreator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <jsp:useBean id="reservation" class="model.Reservation" scope="request" />
     <!DOCTYPE html>
@@ -20,18 +21,17 @@
             </p>
             <p class="rloc" id="rloc">
                 <jsp:getProperty name="reservation" property="numOfPeople" /> people
-            </p>
+            </p><div class="center">
                 <!-- Make the button click call the resturant (you can use "tel:") -->
-                <form action="tel:<jsp:getProperty name="reservation" property="restaurantPhone" />">
-                <button type="submit">
+                <a href="tel:<%=new DatabaseRestaurantCreator().create(reservation.getRestaurantUserName()).getDetails().phone%>">
                     <%
                         request.setAttribute("text", "📞 Ask to cancel" );
                         request.setAttribute("isActive", false);
                         request.setAttribute("isRed", false);
                     %>
                     <jsp:include page="Button.jsp" />
-                </button>
-                </form>
+                </a>
+            </div>
         </div>
     </body>
 
