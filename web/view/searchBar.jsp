@@ -11,7 +11,7 @@
         input.addEventListener("keydown", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
-                document.getElementById("update").value = "search";
+                document.getElementsByName("action")[0].value = "search";
                 document.querySelectorAll("form")[0].submit();
             }
             
