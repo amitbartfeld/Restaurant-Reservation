@@ -31,7 +31,13 @@ public class Controller extends HttpServlet {
         String action = request.getParameter("action");
         switch(action) {
             case "login":
-                
+                String search = request.getParameter("search");
+                if (search == null)
+                    search = "";
+                request.setAttribute("isClient", true);
+                request.setAttribute("pageName", "home");
+                request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
+                transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
             case "signup":
                 request.setAttribute("isClient", true);
@@ -42,8 +48,14 @@ public class Controller extends HttpServlet {
             case "restaurantsignup":
                 
                 break;
+            case "restaurant":
+                request.setAttribute("isClient", true);
+                request.setAttribute("pageName", "home");
+                request.setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
+                transferToPage("view/RestaurantPage.jsp", request, response);
+                break;
             case "search":
-                String search = request.getParameter("search");
+                search = request.getParameter("search");
                 if (search == null)
                     search = "";
                 request.setAttribute("isClient", true);

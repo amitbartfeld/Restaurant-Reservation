@@ -28,5 +28,6 @@
         request.setAttribute("isRed", false);
     %>
     <jsp:include page="Button.jsp" />
+    
     </body>
 </html>

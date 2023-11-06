@@ -34,8 +34,9 @@
                 <!-- Get data from database -->
             <%
                 for (RestaurantDetails details : restaurants) {
-                    request.setAttribute("restaurantName", details.name);
-                    request.setAttribute("location", details.location);
+                    request.getSession().setAttribute("restaurantName", details.name);
+                    request.getSession().setAttribute("location", details.location);
+                    request.getSession().setAttribute("hours", details.openingHours);
             %>
             <jsp:include page="RestaurantCard.jsp" />
             <%}%>
