@@ -38,7 +38,7 @@ button {
 
 
 /* Text Field */
-.text, input[type=text] {
+input.text {
   width: 100%;
   height: 40px;
   border-radius: 50px;
@@ -50,10 +50,10 @@ button {
   background: #F6F6F6;
   text-align: center;
 }
-.text, input[type=text]:active {
+input.text:active {
   outline: none;
 }
-.text, input[type=text]::placeholder{
+input.text::placeholder{
   color: #8F8F8F;
   text-align: center;
   font-family: Inter;
@@ -114,6 +114,21 @@ button {
   height: 105px;
   top: 45px;
   left: 97px;
+}
+
+.home-page-logged-out .text-wrapper {
+  position: absolute;
+  width: 223px;
+  height: 60px;
+  top: 174px;
+  left: 38px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
 .home-paget, .texlogged-out  {
@@ -270,6 +285,7 @@ button {
 }
 .redButton{
   background-color: #A30000;
+  color: white;
 }
 
 

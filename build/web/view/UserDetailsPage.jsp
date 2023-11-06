@@ -18,8 +18,8 @@
           document.getElementById("update").value = id;
         }
 
-        const password = $("#newPassword");
-        const pasrepeat = $("#repeatPassword");
+        const password = document.getElementById("newpassword");
+        const pasrepeat = document.getElementById("repeatpassword");
         const inputHandler = function (e) {
           if (password.val() !== pasrepeat.val()) {
             pasrepeat.css("border-color", "red");
