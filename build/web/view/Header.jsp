@@ -1,6 +1,7 @@
 <%-- Document : header Created on : Nov 5, 2023, 7:25:23 PM Author : admin --%>
 
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
+        <jsp:useBean id="isClient" scope="session" class="java.lang.Boolean" />
         <jsp:useBean id="pageName" scope="request" class="java.lang.String" />
 
         <!DOCTYPE html>

@@ -17,11 +17,13 @@ import model.auth.DatabaseRestaurantCreator;
 public class Reservation {
     private final String restaurantUserName;
     private final String clientUserName;
+    private final long time;
     private final int numOfPeople;
     private final long reservationTime;
     private boolean isRelevant;
 
-    public Reservation(String restaurantUserName, String clientUserName, int numOfPeople, long reservationTime, boolean isRelevant) {
+    public Reservation(long time, String restaurantUserName, String clientUserName, int numOfPeople, long reservationTime, boolean isRelevant) {
+        this.time = time;
         this.restaurantUserName = restaurantUserName;
         this.clientUserName = clientUserName;
         this.numOfPeople = numOfPeople;
@@ -53,9 +55,23 @@ public class Reservation {
         return new DatabaseRestaurantCreator().create(restaurantUserName).details.phone;
     }
 
-    public boolean isIsRelevant() {
+    public boolean isRelevant() {
         return isRelevant;
     }
+
+    public String getClientUserName() {
+        return clientUserName;
+    }
+
+    public String getRestaurantUserName() {
+        return restaurantUserName;
+    }
+
+    public long getTime() {
+        return time;
+    }
+    
+    
     
     
     

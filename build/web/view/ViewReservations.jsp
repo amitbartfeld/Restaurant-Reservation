@@ -1,3 +1,6 @@
+<%@page import="java.util.LinkedList"%>
+<%@page import="model.Constants"%>
+<%@page import="model.DatabaseOperationsSingleton"%>
 <%@page import="model.Reservation" %>
 <jsp:useBean id="user" scope="session" class="model.auth.UserDetails"/>
     <!DOCTYPE html>
@@ -28,13 +31,47 @@
             <p>Last Reservations:</p>
             <div></div>
             <div class="grid">
-                    <jsp:include page="ClientReservationView.jsp" />
+                <%
+                    if ((boolean)request.getSession().getAttribute("isClient")) {
+                        DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                        LinkedList<Object[]> rows = databaseOperations.getAllRows();
+                        for (Object[] row : rows) {
+                            Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
+                            if (r.isRelevant() && r.getClientUserName().equals(user.username)) {
+                                request.setAttribute("reservation", r);
+                                %>
+                                   <jsp:include page="ClientReservationView.jsp" />
+                                <%
+                            }
+                        }
+                    } else {
+                        DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                        LinkedList<Object[]> rows = databaseOperations.getAllRows();
+                        for (Object[] row : rows) {
+                            Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
+                            if (Boolean.parseBoolean(row[3].toString())) {
+                                request.setAttribute("reservation", r);
+                                %>
+                                   <jsp:include page="ClientReservationView.jsp" />
+                                <%
+                            }
+                        }
+                    %>
+                    <jsp:include page="RestaurantReservationView.jsp" />
             </div>
             <p>Reservations History:</p>
             <div></div>
             <div class="grid">
                 <!-- add old reservations here -->
+                <%
+                    if ((boolean)request.getSession().getAttribute("isClient")) {
+                        
+                %>
                 <jsp:include page="OldClientReservationView.jsp" />
+                <%} else {
+                        
+                %>
+                <jsp:include page="OldRestaurantReservationView.jsp" />
             </div>
         </div>
             <input type="hidden" name="action" id="update" />
