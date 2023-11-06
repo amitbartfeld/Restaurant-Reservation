@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="./style.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="utf-8" />
-        <title>Restaurant Reservation</title>
+        <title>Restaurant Reservation | Login</title>
         <script>
             function changeClick(id) {
                 document.getElementById("update").value = id;
@@ -39,7 +39,7 @@
                                 request.setAttribute("textFieldName", "password" );
                                 request.setAttribute("textFieldType", "password" ); %>
                                 <jsp:include page="TextField.jsp" />
-                                <div>
+                                <div class="center">
                                     <% request.setAttribute("text", "Login" ); request.setAttribute("isActive", false);
                                         request.setAttribute("isRed", false); %>
                                         <button type="submit" onclick="changeClick(this.id);" id="login">
