@@ -18,6 +18,10 @@
         function changeClick(id) {
           document.getElementById("update").value = id;
         }
+        
+        function changeparam(id) {
+          document.getElementById("param").value = id;
+        }
 
         $(document).ready(function () {
             $("#newPassword").on('change keydown paste input', function (e) {
@@ -106,7 +110,7 @@
           <div>
             <% request.setAttribute("text", "Change Password" ); request.setAttribute("isActive", false);
               request.setAttribute("isRed", false); %>
-              <button type="submit" onclick="changeClick(this.id);" id="updatePassword">
+              <button type="submit" onclick="changeClick(id);" id="updatePassword">
                 <jsp:include page="Button.jsp" />
               </button>
           </div>
@@ -127,7 +131,7 @@
               </div>
               <div>
                 <% request.setAttribute("text", "Change Phone Number" ); request.setAttribute("isActive", false); request.setAttribute("isRed", false); %>
-                <button type="submit" onclick="changeClick(this.id);" id="updatePhone">
+                <button type="submit" onclick="changeClick(id);" id="updatePhone">
                   <jsp:include page="Button.jsp" />
                 </button>
               </div>
@@ -149,7 +153,7 @@
               </div>
               <div>
                 <% request.setAttribute("text", "Change Email Address" ); request.setAttribute("isActive", false); request.setAttribute("isRed", false); %>
-                <button type="submit" onclick="changeClick(this.id);" id="updateEmail">
+                <button type="submit" onclick="changeClick(id);" id="updateEmail">
                   <jsp:include page="Button.jsp" />
                 </button>
               </div>
@@ -171,11 +175,12 @@
               request.setAttribute("isActive", false); 
               request.setAttribute("textFieldName", "delete");
               request.setAttribute("isRed", true); %>
-              <button type="submit" onclick="changeClick(this.id);" id="deleteAccount">
+              <button type="submit" onclick="changeClick(id);" id="deleteAccount">
                 <jsp:include page="Button.jsp" />
               </button>
           </div>
         </div>
+        <input type="hidden" name="param" id="param" />
 
 
         <%}%>

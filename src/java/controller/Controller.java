@@ -20,7 +20,6 @@ import model.Constants;
 import model.DatabaseOperationsSingleton;
 import model.SearchRestaurantLogic;
 import model.UserDetailsChanger;
-import model.auth.RestaurantDetails;
 import model.auth.UserDetails;
 
 /**
@@ -90,6 +89,7 @@ public class Controller extends HttpServlet {
                 transferToPage("view/ViewReservations.jsp", request, response);
                 break;
             case "password":
+            case "updatePassword":
                 String newPassword = request.getParameter("newPassword");
                 if (newPassword != null) {
                     boolean isClient = (boolean)request.getSession().getAttribute("isClient");
@@ -101,6 +101,7 @@ public class Controller extends HttpServlet {
                 transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
             case "phone":
+            case "updatePhone":
                 String newPhone = request.getParameter("newPhone");
                 if (newPhone != null) {
                     boolean isClient = (boolean)request.getSession().getAttribute("isClient");
@@ -112,6 +113,7 @@ public class Controller extends HttpServlet {
                 transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
             case "email":
+            case "updateEmail":
                 String newEmail = request.getParameter("newEmail");
                 if (newEmail != null) {
                     boolean isClient = (boolean)request.getSession().getAttribute("isClient");
@@ -123,16 +125,14 @@ public class Controller extends HttpServlet {
                 transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
             case "delete":
-                if (request.getParameter("delete") != null) {
-                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
-                    UserDetails user = (UserDetails)request.getSession().getAttribute("user");
-                    new UserDetailsChanger(!isClient).deleteUser(user.username, request.getSession());
-                    transferToPage("view/HomePage.jsp", request, response);
-                } else {
-                    request.setAttribute("pageName", "edit");
-                    request.setAttribute("subPage", "delete");
-                    transferToPage("view/UserDetailsPage.jsp", request, response);
-                }
+                request.setAttribute("pageName", "edit");
+                request.setAttribute("subPage", "delete");
+                transferToPage("view/UserDetailsPage.jsp", request, response);
+            case "deleteAccount":
+                boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                new UserDetailsChanger(!isClient).deleteUser(user.username, request.getSession());
+                transferToPage("view/HomePage.jsp", request, response);
                 break;
             case "logout":
                 request.getSession().invalidate();
