@@ -11,11 +11,18 @@
     <script>
         var isRed = <%=isRed%>;
         var isActive = <%=isActive%>;
-        //TODO change css by these states
+        $(document).ready(function(){
+            if(isActive){
+                $(#b).addClass("disabledButton");
+            }
+            if(isRed){
+                $(#b).addClass("redButton");
+            }
+        })
     </script>
 </head>
 <body>
-    <div class="buttonStyle">
+    <div class="buttonStyle" id="b">
         <p class="buttonText"><%=text%></p>
     </div>
 </body>
