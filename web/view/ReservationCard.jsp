@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="card">
-        <p class="rname" id="rname"><jsp:getProperty name="reservation" property="reservationDate" /> â¢ <jsp:getProperty name="reservation" property="reservationTime" /></p>
+        <p class="rname" id="rname"><jsp:getProperty name="reservation" property="reservationDate" /> • <jsp:getProperty name="reservation" property="reservationTime" /></p>
         <p class="rloc" id="rloc"><jsp:getProperty name="reservation" property="restaurantName" /></p>
         <p class="rloc" id="rloc"><jsp:getProperty name="reservation" property="numOfPeople" /> people</p>
-        <%request.setAttribute("text", "ð Ask to cancel");%>
+        <%request.setAttribute("text", "📞 Ask to cancel");%>
         <!-- Make the button click call the resturant (you can use "tel:") -->
         <button type="button" id="openRestaurant"><jsp:include page="Button.jsp" /></button>
     </div>
