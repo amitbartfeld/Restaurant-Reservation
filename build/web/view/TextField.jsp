@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="placeHolder" class="java.lang.String" scope="request" />
+<jsp:useBean id="placeholder" class="java.lang.String" scope="request" />
 <jsp:useBean id="textFieldType" class="java.lang.String" scope="request" />
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,6 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <input class="text" type="<%=textFieldType%>" placeholder="<%=placeHolder%>"/>
+        <input class="text" type="<%=textFieldType%>" placeholder="<%=placeholder%>"/>
     </body>
 </html>
