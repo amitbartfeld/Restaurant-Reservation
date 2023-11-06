@@ -40,6 +40,17 @@ public class Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         switch(action) {
+            case "home":
+                boolean isClient = Boolean.parseBoolean(request.getSession().getAttribute("isClient").toString());
+                if (isClient) {
+                    request.setAttribute("pageName", "home");
+                    request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
+                    transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                } else {
+                    request.setAttribute("pageName", "reservations");
+                    transferToPage("view/ViewReservations.jsp", request, response);
+                }
+                break;
             case "login":
                 request.setAttribute("message", "");
                 String username = request.getParameter("username");
@@ -161,7 +172,7 @@ public class Controller extends HttpServlet {
                 long time = c.getTimeInMillis();
                 DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
                 try {
-                    databaseOperations.insertDataToSql(new Object[]{System.currentTimeMillis(), restaurantUserName, clientUserName, numOfPeople, true, time});
+                    databaseOperations.insertDataToSql(new Object[]{System.currentTimeMillis(), restaurantUserName, numOfPeople, true, clientUserName, time});
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -172,7 +183,7 @@ public class Controller extends HttpServlet {
             case "updatePassword":
                 String newPassword = request.getParameter("newPassword");
                 if (newPassword != null) {
-                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    isClient = (boolean)request.getSession().getAttribute("isClient");
                     UserDetails user = (UserDetails)request.getSession().getAttribute("user");
                     new UserDetailsChanger(!isClient).changePassword(user.username, newPassword, request.getSession());
                 }
@@ -184,7 +195,7 @@ public class Controller extends HttpServlet {
             case "updatePhone":
                 String newPhone = request.getParameter("newPhone");
                 if (newPhone != null) {
-                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    isClient = (boolean)request.getSession().getAttribute("isClient");
                     UserDetails user = (UserDetails)request.getSession().getAttribute("user");
                     new UserDetailsChanger(!isClient).changePhone(user.username, newPhone, request.getSession());
                 }
@@ -196,7 +207,7 @@ public class Controller extends HttpServlet {
             case "updateEmail":
                 String newEmail = request.getParameter("newEmail");
                 if (newEmail != null) {
-                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    isClient = (boolean)request.getSession().getAttribute("isClient");
                     UserDetails user = (UserDetails)request.getSession().getAttribute("user");
                     new UserDetailsChanger(!isClient).changePhone(user.username, newEmail, request.getSession());
                 }
@@ -241,8 +252,8 @@ public class Controller extends HttpServlet {
                 request.setAttribute("subPage", "delete");
                 transferToPage("view/UserDetailsPage.jsp", request, response);
             case "deleteAccount":
-                boolean isClient = (boolean)request.getSession().getAttribute("isClient");
                 UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                isClient = (boolean)request.getSession().getAttribute("isClient");
                 new UserDetailsChanger(!isClient).deleteUser(user.username, request.getSession());
                 transferToPage("view/HomePage.jsp", request, response);
                 break;
@@ -256,8 +267,6 @@ public class Controller extends HttpServlet {
                 } catch (SQLException | ClassNotFoundException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                
             case "logout":
                 request.getSession().invalidate();
                 transferToPage("view/HomePage.jsp", request, response);
