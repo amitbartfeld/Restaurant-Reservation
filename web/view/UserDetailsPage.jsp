@@ -17,19 +17,32 @@
         function changeClick(id) {
           document.getElementById("update").value = id;
         }
-
-        const password = document.getElementById("newpassword");
-        const pasrepeat = document.getElementById("repeatpassword");
-        const inputHandler = function (e) {
-          if (password.val() !== pasrepeat.val()) {
-            pasrepeat.css("border-color", "red");
-            $("#updatePassword").prop("disabled", true);
-          }
-        }
-        password.on("input", inputHandler);
-        password.on("propertychange", inputHandler);
-        pasrepeat.on("input", inputHandler);
-        pasrepeat.on("propertychange", inputHandler);
+        $(document).ready(function () {
+            $("#newPassword").on('change keydown paste input', function (e) {
+                console.log(e.target.value);
+                if ($("#newPassword").val() !== $("#repeatPassword").val()) {
+                    console.log("Passwords do not match");
+                    $("#repeatPassword").css("border-color", "red");
+                    $("#updatePassword").prop("disabled", true);
+                }
+                else{
+                    $("#repeatPassword").css("border-color", "black");
+                    $("#updatePassword").prop("disabled", false);
+                }
+            });
+            $("#repeatPassword").on('change keydown paste input', function (e) {
+                console.log(e.target.value);
+                if ($("#newPassword").val() !== $("#repeatPassword").val()) {
+                    console.log("Passwords do not match");
+                    $("#repeatPassword").css("border-color", "red");
+                    $("#updatePassword").prop("disabled", true);
+                }
+                else{
+                    $("#repeatPassword").css("border-color", "black");
+                    $("#updatePassword").prop("disabled", false);
+                }
+            });
+        });
 
 
       </script>
