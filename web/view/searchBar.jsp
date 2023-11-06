@@ -13,14 +13,13 @@
                 $("#ac").click();
             }
             
-        })
+        });
     </script>
 </head>
 <body>
     <div class="center">
         <div class="searchcontainer">
             <input type="text" name="search" id="search" placeholder="Search for a restaurant or location..." class="searchbar"/>
-            <button type="submit" id="ac" value="search" class="hidden" onclick="changeClick(search);">Search</button>
         </div>
     </div>
 </body>

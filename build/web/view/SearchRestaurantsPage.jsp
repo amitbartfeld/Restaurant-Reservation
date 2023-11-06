@@ -31,6 +31,7 @@
 
 <body>
     <form action="Controller">
+                    <button type="submit" id="ac" value="search" class="hidden" onclick="changeClick(search);">Search</button>
     <jsp:include page="Header.jsp" />
     <jsp:include page="HelloTitle.jsp" />
     <jsp:include page="SearchBar.jsp" />
