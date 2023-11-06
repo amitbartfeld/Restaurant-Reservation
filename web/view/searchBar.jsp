@@ -9,10 +9,8 @@
     <script>
         var input = document.getElementById("search");
         input.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                document.getElementsByName("action")[0].value = "search";
-                document.querySelectorAll("form")[0].submit();
+            if (event.keyCode === 13) {
+                $("#ac").click();
             }
             
         })
@@ -22,6 +20,7 @@
     <div class="center">
         <div class="searchcontainer">
             <input type="text" name="search" id="search" placeholder="Search for a restaurant or location..." class="searchbar"/>
+            <button type="submit" id="ac" value="search" class="hidden" onclick="changeClick(search);">Search</button>
         </div>
     </div>
 </body>
