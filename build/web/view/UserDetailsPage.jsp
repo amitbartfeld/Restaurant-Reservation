@@ -1,33 +1,149 @@
-<%-- 
-    Document   : UserDetailsPage
-    Created on : Nov 6, 2023, 2:41:52 PM
-    Author     : admin
---%>
+<%-- Document : UserDetailsPage Created on : Nov 6, 2023, 2:41:52 PM Author : admin --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="subPage" class="java.lang.String" scope="request" />
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="./style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta charset="utf-8" />
-  <title>Restaurant Reservation</title>
-  <script>
-    function changeClick(id) {
-      document.getElementById("update").value = id;
-    }
-  </script>
-</head>
+  <%@page contentType="text/html" pageEncoding="UTF-8" %>
+    <jsp:useBean id="subPage" class="java.lang.String" scope="request" />
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+      <link rel="stylesheet" href="./style.css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <meta charset="utf-8" />
+      <title>Restaurant Reservation</title>
+      <script>
+        function changeClick(id) {
+          document.getElementById("update").value = id;
+        }
+
+        const password = $("#newPassword");
+        const pasrepeat = $("#repeatPassword");
+        const inputHandler = function (e) {
+          if (password.val() !== pasrepeat.val()) {
+            pasrepeat.css("border-color", "red");
+            $("#updatePassword").prop("disabled", true);
+          }
+        }
+        password.on("input", inputHandler);
+        password.on("propertychange", inputHandler);
+        pasrepeat.on("input", inputHandler);
+        pasrepeat.on("propertychange", inputHandler);
+
+
+      </script>
+    </head>
+
     <body>
-    <jsp:include page="Header.jsp" />
-    <jsp:include page="HelloTitle.jsp" />
-    <%
-        request.setAttribute("text", "🔑 Change Password");
-        request.setAttribute("isActive", false);
-        request.setAttribute("isRed", false);
-    %>
-    <jsp:include page="Button.jsp" />
-    
+      <jsp:include page="Header.jsp" />
+      <jsp:include page="HelloTitle.jsp" />
+      <!-- Sub Menu -->
+      <form action="Controller">
+        <!-- Password menu item - will be active if subPage == "password" -->
+        <% request.setAttribute("text", "🔑 Change Password" ); request.setAttribute("isActive",
+          !subPage.equals("password")); request.setAttribute("isRed", false); %>
+          <button type="submit" onclick="changeClick(this.id);" id="password">
+            <jsp:include page="Button.jsp" />
+          </button>
+          <!-- Phone menu item - will be active if subPage == "phone" -->
+          <% request.setAttribute("text", "📞 Change Phone Number" ); request.setAttribute("isActive",
+            !subPage.equals("phone")); request.setAttribute("isRed", false); %>
+            <button type="submit" onclick="changeClick(this.id);" id="phone">
+              <jsp:include page="Button.jsp" />
+            </button>
+            <!-- Email menu item - will be active if subPage == "email" -->
+            <% request.setAttribute("text", "✉️ Change Email Address" ); request.setAttribute("isActive",
+              !subPage.equals("email")); request.setAttribute("isRed", false); %>
+              <button type="submit" onclick="changeClick(this.id);" id="email">
+                <jsp:include page="Button.jsp" />
+              </button>
+              <!-- Delete menu item - will be active if subPage == "delete" -->
+              <% request.setAttribute("text", "🗑️ Delete Account" ); request.setAttribute("isActive",
+                !subPage.equals("delete")); request.setAttribute("isRed", true); %>
+                <button type="submit" onclick="changeClick(this.id);" id="delete">
+                  <jsp:include page="Button.jsp" />
+                </button>
+
+
+                <input type="hidden" name="action" id="update" />
+      </form>
+
+
+      <!-- Change Password -->
+      <form action="Controller">
+        <div class="center">
+          <div>
+            <p class="inputTitle">Type new password:</p>
+            <% request.setAttribute("placeholder", "New password" ); request.setAttribute("textFieldName", "newPassword"
+              ); request.setAttribute("textFieldType", "password" ); %>
+              <jsp:include page="TextField.jsp" />
+              <p class="inputTitle">Repeat new password:</p>
+              <% request.setAttribute("placeholder", "Repeat password" );
+                request.setAttribute("textFieldName", "repeatPassword" );
+                request.setAttribute("textFieldType", "password" ); %>
+                <jsp:include page="TextField.jsp" />
+          </div>
+          <div>
+            <% request.setAttribute("text", "Change Password" ); request.setAttribute("isActive", false);
+              request.setAttribute("isRed", false); %>
+              <button type="submit" onclick="changeClick(this.id);" id="updatePassword">
+                <jsp:include page="Button.jsp" />
+              </button>
+              <input type="hidden" name="action" id="update" />
+          </div>
+        </div>
+      </form>
+
+      <!-- Change Phone Number -->
+      <form action="Controller">
+        <div class="center">
+          <div>
+            <p>Your phone number is: <b>
+                <%=phone%>
+              </b></p>
+            <p class="inputTitle">Type new phone number:</p>
+            <% request.setAttribute("placeholder", "Enter a new phone number" );
+              request.setAttribute("textFieldName", "newPhone" ); request.setAttribute("textFieldType", "phone" ); %>
+              <jsp:include page="TextField.jsp" />
+              </div>
+              <div>
+                <% request.setAttribute("text", "Change Phone Number" ); request.setAttribute("isActive", false); request.setAttribute("isRed", false); %>
+                <button type="submit" onclick="changeClick(this.id);" id="updatePhone">
+                  <jsp:include page="Button.jsp" />
+                </button>
+                <input type="hidden" name="action" id="update" />
+              </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- Change Email -->
+      <form action="Controller">
+        <div class="center">
+          <div>
+            <p>Your email address is: <b>
+                <%=email%>
+              </b></p>
+            <p class="inputTitle">Type new email address:</p>
+            <% request.setAttribute("placeholder", "Enter a new email address" );
+              request.setAttribute("textFieldName", "newEmail" ); request.setAttribute("textFieldType", "email" ); %>
+              <jsp:include page="TextField.jsp" />
+              </div>
+              <div>
+                <% request.setAttribute("text", "Change Email Address" ); request.setAttribute("isActive", false); request.setAttribute("isRed", false); %>
+                <button type="submit" onclick="changeClick(this.id);" id="updateEmail">
+                  <jsp:include page="Button.jsp" />
+                </button>
+                <input type="hidden" name="action" id="update" />
+              </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- Delete Account -->
+
+
     </body>
-</html>
+
+    </html>
