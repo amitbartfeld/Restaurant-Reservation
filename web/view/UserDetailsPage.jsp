@@ -158,7 +158,25 @@
         <%}%>
         
       <!-- Delete Account -->
-    
+      <%if (subPage.equals("delete")) {%>
+        <div class="center">
+          <div>
+            <p class="inputTitle">Type your password to confirm deletion:</p>
+            <% request.setAttribute("placeholder", "Password" ); request.setAttribute("textFieldName", "password"
+              ); request.setAttribute("textFieldType", "password" ); %>
+              <jsp:include page="TextField.jsp" />
+          </div>
+          <div>
+            <% request.setAttribute("text", "Delete Account" ); request.setAttribute("isActive", false);
+              request.setAttribute("isRed", true); %>
+              <button type="submit" onclick="changeClick(this.id);" id="deleteAccount">
+                <jsp:include page="Button.jsp" />
+              </button>
+          </div>
+        </div>
+
+
+        <%}%>
         <input type="hidden" name="action" id="update" />
     </form>
 
