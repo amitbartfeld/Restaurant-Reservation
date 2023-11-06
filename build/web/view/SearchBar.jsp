@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="isClient" scope="request" class="java.lang.Boolean"/>
+<jsp:useBean id="isClient" scope="session" class="java.lang.Boolean"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
