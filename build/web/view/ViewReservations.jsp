@@ -1,4 +1,5 @@
 <%@page import="model.Reservation" %>
+<jsp:useBean id="user" scope="session" class="model.auth.UserDetails"/>
     <!DOCTYPE html>
     <html lang="en">
 
