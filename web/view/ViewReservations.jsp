@@ -75,6 +75,7 @@
             </div>
         </div>
             <input type="hidden" name="action" id="update" />
+            <input type="hidden" name="res" id="res"/>
         </form>
     </body>
 
