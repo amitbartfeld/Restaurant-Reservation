@@ -301,7 +301,7 @@ button {
 /* Restaurant Card */
 .card {
   width: 380px;
-  height: 180px;
+  height: fit-content;
   flex-shrink: 0;
   border-radius: 30px;
   border: 2px solid #000;
