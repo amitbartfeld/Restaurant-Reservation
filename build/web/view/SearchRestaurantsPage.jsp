@@ -4,6 +4,10 @@
     Author     : admin
 --%>
 
+<%@page import="model.auth.RestaurantDetails"%>
+<%@page import="model.SearchRestaurantLogic"%>
+<%@page import="model.Constants"%>
+<%@page import="model.DatabaseOperationsSingleton"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +30,16 @@
         <div class="RestaurantContainer">
             <p>Featured Restaurants:</p><div></div>
             <div class="grid">
+                <!-- Get data from database -->
             <%
-                request.setAttribute("restaurantName", "Papa Joe");
-                request.setAttribute("location", "Mama Joe");
+                
+                RestaurantDetails[] restaurants = SearchRestaurantLogic.search(request.getParameter("search"));
+                for (RestaurantDetails details : restaurants) {
+                    request.setAttribute("restaurantName", details.name);
+                    request.setAttribute("location", details.location);
             %>
             <jsp:include page="RestaurantCard.jsp" />
+            <%}%>
             </div>
         </div>
     </div>
