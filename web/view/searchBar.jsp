@@ -20,7 +20,7 @@
 <body>
     <div class="center">
         <div class="searchcontainer">
-            <input type="text" name="search" id="search" placeholder="Search for a restaurant or location..." autocomplete="off" class="searchbar"/>
+            <input type="text" name="search" id="search" placeholder="Search for a restaurant or location..." class="searchbar"/>
         </div>
     </div>
 </body>
