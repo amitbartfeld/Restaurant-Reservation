@@ -14,6 +14,6 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <input type="<%=textFieldType%>" placeholder="<%=placeHolder%>"/>
+        <input class="text" type="<%=textFieldType%>" placeholder="<%=placeHolder%>"/>
     </body>
 </html>
