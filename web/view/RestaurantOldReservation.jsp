@@ -25,22 +25,10 @@
             </p>
             <p class="rloc" id="rloc">
                 <jsp:getProperty name="reservation" property="numOfPeople" /> people
-            <p class="rloc" id="rloc">
-            <jsp:getProperty name="reservation" property="email" /> • <jsp:getProperty name="reservation" property="phone" /> 
-        </p>
-            <form action="Controller" />">
-                <!-- Cancel the reservation (move to history) -->
-                <button type="submit" onclick="changeClick(id)" id="cancel">
-                    <%
-                        request.setAttribute("text", "🗑️ Cancel" );
-                        request.setAttribute("isActive", false);
-                        request.setAttribute("isRed", false);
-                    %>
-                    <jsp:include page="Button.jsp" />
-                </button>
-                <input type="hidden" name="action" id="update" />
-
-                </form>
+            </p>
+        <p class="rloc" id="rloc">
+        <jsp:getProperty name="reservation" property="email" /> • <jsp:getProperty name="reservation" property="phone" /> 
+    </p>
         </div>
     </body>
 

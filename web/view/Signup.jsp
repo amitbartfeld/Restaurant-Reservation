@@ -19,11 +19,11 @@
                     if ($("#password").val() !== $("#repeatPassword").val()) {
                         console.log("Passwords do not match");
                         $("#repeatPassword").css("border-color", "red");
-                        $("#updatePassword").prop("disabled", true);
+                        $("#signup").prop("disabled", true);
                     }
                     else {
                         $("#repeatPassword").css("border-color", "black");
-                        $("#updatePassword").prop("disabled", false);
+                        $("#signup").prop("disabled", false);
                     }
                 });
                 $("#repeatPassword").on('change keydown paste input', function (e) {
@@ -31,11 +31,11 @@
                     if ($("#password").val() !== $("#repeatPassword").val()) {
                         console.log("Passwords do not match");
                         $("#repeatPassword").css("border-color", "red");
-                        $("#updatePassword").prop("disabled", true);
+                        $("#signup").prop("disabled", true);
                     }
                     else {
                         $("#repeatPassword").css("border-color", "black");
-                        $("#updatePassword").prop("disabled", false);
+                        $("#signup").prop("disabled", false);
                     }
                 });
             });
