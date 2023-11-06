@@ -31,14 +31,10 @@
                         $(".edit").addClass("active");
                     }
                 });
-                function changeClick(id) {
-                    document.getElementById("update").value = id;
-                }
             </script>
         </head>
 
         <body style="margin: 0; padding: 0;">
-            <form action="Controller">
                 <div class="header-frame">
                     <div class="head-layout">
                         <button type="submit" onclick="changeClick(`home`);">
@@ -66,8 +62,6 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="action" id="update" />
-            </form>
             <div style="height: 130px"></div>
         </body>
 

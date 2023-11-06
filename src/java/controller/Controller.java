@@ -5,7 +5,9 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Constants;
+import model.DatabaseOperationsSingleton;
 import model.SearchRestaurantLogic;
 import model.auth.RestaurantDetails;
 import model.auth.UserDetails;
@@ -63,6 +67,29 @@ public class Controller extends HttpServlet {
                 request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
                 transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
+            case "book":
+                String restaurantUserName = request.getSession().getAttribute("restaurantUserName").toString();
+                String restaurantDate = request.getParameter("date");
+                String restaurantTime = request.getParameter("time");
+                int numOfPeople = Integer.parseInt(request.getParameter("numOfPeople"));
+                Calendar c = Calendar.getInstance();
+                String[] dateParts = restaurantDate.split("-");
+                int hours = Integer.parseInt(restaurantTime.split(":")[0]);
+                c.set(Calendar.YEAR, Integer.parseInt(dateParts[0]));
+                c.set(Calendar.MONTH, Integer.parseInt(dateParts[1])-1);
+                c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[2]));
+                c.set(Calendar.HOUR_OF_DAY, hours);
+                c.set(Calendar.MINUTE, 0);
+                c.set(Calendar.SECOND, 0);
+                long time = c.getTimeInMillis();
+                DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                try {
+                    databaseOperations.insertDataToSql(new Object[]{time, restaurantUserName, numOfPeople, true});
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+
         }
     }
     

@@ -35,8 +35,6 @@
             <jsp:include page="Button.jsp" />
         </button>
         </div>
-        <input type="hidden" name="action" id="update" />
-    </form>
         <!-- Change the Restaurant Name to the name of the restaurant -->
         <p class="rname" id="rname">
             <%=restaurantName%>
@@ -70,7 +68,7 @@
         </p>
         <div class="center">
             <div class="formcard">
-                <form action="Controller">
+                <div>
                     <jsp:include page="DateField.jsp" />
 
                     <div class="space"></div>
@@ -81,6 +79,7 @@
                     <!-- \/ Make sure the input in this text box is set to numbers only! \/ -->
                     <%
                         request.setAttribute("placeholder", "How many people?");
+                        request.setAttribute("textFieldName", "numOfPeople");
                         request.setAttribute("textFieldType", "number");
                     %>
                     <jsp:include page="TextField.jsp" />
@@ -95,9 +94,10 @@
                             <jsp:include page="Button.jsp" />
                     </button>
                     <input type="hidden" name="action" id="update" />
-                </form>
+                </div>
             </div>
         </div>
+        </form>
     </body>
 
     </html>
