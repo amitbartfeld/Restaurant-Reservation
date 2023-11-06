@@ -15,20 +15,20 @@
                 integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script>
-                var page = "<%=pageName%>";
+                var page = "<=%pageName%>";
                 var isClient = <%=isClient%>; //change this variable to false if logged in as restaurant
                 $(document).ready(function () {
                     if (!isClient) {
                         $("#home").addClass("hidden");
                     }
                     if (page === "home") {
-                        $("#home").addClass("active");
+                        $(".home").addClass("active");
                     }
                     if (page === "reservation") {
-                        $("#reservation").addClass("active");
+                        $(".reservation").addClass("active");
                     }
-                    if (page === "edit") {
-                        $("#edit").addClass("active");
+                    if (page === "edit" || page === "password" || page === "phone" || page === "email" || page === "delete") {
+                        $(".edit").addClass("active");
                     }
                 });
                 function changeClick(id) {
@@ -41,7 +41,7 @@
             <form action="Controller">
                 <div class="header-frame">
                     <div class="head-layout">
-                        <button type="submit" onclick="changeClick(this.id);" id="home">
+                        <button type="submit" onclick="changeClick(`home`);">
                             <div class="logo">
                                 <img class="food-bank" src="img/food-bank.svg" />
                                 <div class="title">Restaurant Reservation</div>
@@ -49,18 +49,18 @@
                         </button>
                         <div class="nevigation">
                             <span id="home">
-                                <button type="submit" onclick="changeClick(this.id);" id="home"> Home </button> •
+                                <button type="submit" onclick="changeClick(this.id);" id="home" class="home"> Home </button> •
                             </span>
                             <span id="reservation">
-                                <button type="submit" onclick="changeClick(this.id);" id="reservations"> View
+                                <button type="submit" onclick="changeClick(this.id);" id="reservations" class="reservations"> View
                                     Reservations
                                 </button> •
                             </span>
                             <span id="edit">
-                                <button type="submit" onclick="changeClick(this.id);" id="edit"> Edit Profile </button>
+                                <button type="submit" onclick="changeClick(this.id);" id="edit" class="edit"> Edit Profile </button>
                                 •
                             </span>
-                            <button type="submit" onclick="changeClick(this.id);" id="logout">
+                            <button type="submit" onclick="changeClick(this.id);" id="logout" class="logout">
                                 Logout
                             </button>
                         </div>

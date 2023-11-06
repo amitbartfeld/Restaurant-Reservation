@@ -233,8 +233,8 @@ input[type=text].text::placeholder{
   font-weight: 400;
 }
 
-.nevigation .active {
-  font-weight: 700;
+.active {
+  font-weight: 900 !important;
 }
 
 /* button */
