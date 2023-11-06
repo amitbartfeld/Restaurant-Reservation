@@ -9,8 +9,8 @@ package model;
  * @author admin
  */
 public class OpeningHours {
-    int[] startingHours;
-    int[] endingHours;
+    private final int[] startingHours;
+    private final int[] endingHours;
     
     public OpeningHours(int[] startingHours, int[] endingHours) {
         this.startingHours = startingHours;
@@ -26,6 +26,13 @@ public class OpeningHours {
         openingHoursString = openingHoursString.trim();
         return openingHoursString;
     }
-    
+
+    public int[] getEndingHours() {
+        return endingHours;
+    }
+
+    public int[] getStartingHours() {
+        return startingHours;
+    }
     
 }

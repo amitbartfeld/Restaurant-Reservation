@@ -1,6 +1,6 @@
 <%-- 
-    Document   : dateField
-    Created on : Nov 6, 2023, 12:00:22 PM
+    Document   : TimeField
+    Created on : Nov 6, 2023, 12:05:45 PM
     Author     : admin
 --%>
 
@@ -9,9 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <input type="date" name="date"/>
+        <input type="time" name="time" />
     </body>
 </html>
