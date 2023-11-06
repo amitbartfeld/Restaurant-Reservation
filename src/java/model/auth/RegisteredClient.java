@@ -16,6 +16,18 @@ public class RegisteredClient {
         this.details = details;
         this.password = password;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public ClientDetails getDetails() {
+        return details;
+    }
+    
+    
+    
+    
     
     
 }

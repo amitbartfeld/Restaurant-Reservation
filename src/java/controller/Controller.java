@@ -20,6 +20,10 @@ import model.Constants;
 import model.DatabaseOperationsSingleton;
 import model.SearchRestaurantLogic;
 import model.UserDetailsChanger;
+import model.auth.DatabaseClientCreator;
+import model.auth.DatabaseRestaurantCreator;
+import model.auth.RegisteredClient;
+import model.auth.RegisteredRestaurant;
 import model.auth.UserDetails;
 
 /**
@@ -31,33 +35,63 @@ public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getSession().setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
-        request.getSession().setAttribute("isClient", true);
         String action = request.getParameter("action");
         switch(action) {
             case "login":
-                String search = request.getParameter("search");
-                if (search == null)
-                    search = "";
-                request.setAttribute("pageName", "home");
-                request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
-                transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                request.setAttribute("message", "");
+                String username = request.getParameter("username");
+                if (username == null)
+                    transferToPage("view/Login.jsp", request, response);
+                else {
+            try {
+                String password = request.getParameter("password");
+                if (DatabaseOperationsSingleton.getInstance(Constants.clientTable).getSpecificRowByUniqueColumn(Constants.clientUserNameField, username) != null) {
+                    RegisteredClient client = new DatabaseClientCreator().create(username);
+                    if (client.getPassword().equals(password)) {
+                        request.getSession().setAttribute("user", new UserDetails(username, client.getDetails().email, client.getDetails().phone));
+                        request.getSession().setAttribute("isClient", true);
+                        request.setAttribute("pageName", "home");
+                        request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
+                        transferToPage("view/SearchRestaurantsPage.jsp", request, response);
+                    } else {
+                        request.setAttribute("message", "Wrong password");
+                        transferToPage("view/Login.jsp", request, response);
+                    }
+                } else if (DatabaseOperationsSingleton.getInstance(Constants.restaurantTable).getSpecificRowByUniqueColumn(Constants.restaurantUserNameField, username) != null) {
+                    RegisteredRestaurant restaurant = new DatabaseRestaurantCreator().create(username);
+                    if (restaurant.getPassword().equals(password)) {
+                        request.getSession().setAttribute("user", new UserDetails(username, restaurant.getDetails().email, restaurant.getDetails().phone));
+                        request.getSession().setAttribute("isClient", false);
+                        request.setAttribute("pageName", "reservations");
+                        transferToPage("view/ViewReservations.jsp", request, response);
+                    } else {
+                        request.setAttribute("message", "Wrong password");
+                        transferToPage("view/Login.jsp", request, response);
+                    }
+                } else {
+                    request.setAttribute("message", "This user does not exist");
+                    transferToPage("view/Login.jsp", request, response);
+                }
+                
+                transferToPage("view/HomePage.jsp", request, response);
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                }
                 break;
             case "signup":
                 request.setAttribute("pageName", "reservations");
                 transferToPage("view/ViewReservations.jsp", request, response);
                 break;
             case "restaurantsignup":
-                request.setAttribute("pageName", "edit");
-                request.setAttribute("subPage", "password");
-                transferToPage("view/UserDetailsPage.jsp", request, response);
+                
                 break;
             case "restaurant":
                 request.setAttribute("pageName", "home");
                 transferToPage("view/RestaurantPage.jsp", request, response);
                 break;
             case "search":
-                search = request.getParameter("search");
+                String search = request.getParameter("search");
                 if (search == null)
                     search = "";
                 request.setAttribute("pageName", "home");

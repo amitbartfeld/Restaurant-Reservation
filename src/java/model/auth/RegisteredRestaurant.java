@@ -16,4 +16,16 @@ public class RegisteredRestaurant {
         this.details = details;
         this.password = password;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public RestaurantDetails getDetails() {
+        return details;
+    }
+    
+    
+    
+    
 }
