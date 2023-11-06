@@ -80,8 +80,6 @@ public class Controller extends HttpServlet {
                     request.setAttribute("message", "This user does not exist");
                     transferToPage("view/Login.jsp", request, response);
                 }
-                
-                transferToPage("view/HomePage.jsp", request, response);
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -215,7 +213,7 @@ public class Controller extends HttpServlet {
                 request.setAttribute("subPage", "email");
                 transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
-            case "update":
+            case "updateR":
             // Update restaurant
                 String restaurantName = request.getParameter("restaurantName");
                 if (restaurantName != null) {
@@ -251,6 +249,7 @@ public class Controller extends HttpServlet {
                 request.setAttribute("pageName", "edit");
                 request.setAttribute("subPage", "delete");
                 transferToPage("view/UserDetailsPage.jsp", request, response);
+                break;
             case "deleteAccount":
                 UserDetails user = (UserDetails)request.getSession().getAttribute("user");
                 isClient = (boolean)request.getSession().getAttribute("isClient");
@@ -267,6 +266,9 @@ public class Controller extends HttpServlet {
                 } catch (SQLException | ClassNotFoundException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                request.setAttribute("pageName", "reservations");
+                transferToPage("view/ViewReservations.jsp", request, response);
+                break;
             case "logout":
                 request.getSession().invalidate();
                 transferToPage("view/HomePage.jsp", request, response);

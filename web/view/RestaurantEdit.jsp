@@ -5,6 +5,7 @@
 
     <head>
         <link rel="stylesheet" href="./style.css" />
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="utf-8" />
         <title>Restaurant Reservation | Update</title>
@@ -27,10 +28,9 @@
                             <div class="title">Restaurant Reservation</div>
                         </div>
                     </div>
-                    <form action="Controller">
                         <div class="center">
                         <!-- Change the button's text to "Go to Homepage" as written on the text prop -->
-                        <button type="submit" onclick="changeClick(id)" id="homepage">
+                        <button type="submit" onclick="changeClick('home')" id="homeButton">
                             <%
                                 request.setAttribute("text", "Back to Homepage");
                                 request.setAttribute("isActive", false);
@@ -116,7 +116,7 @@
                                 <div class="center">
                                     <% request.setAttribute("text", "Update Restaurant" ); request.setAttribute("isActive", false);
                                         request.setAttribute("isRed", false); %>
-                                        <button type="submit" onclick="changeClick(this.id);" id="update">
+                                        <button type="submit" onclick="changeClick(this.id);" id="updateR">
                                             <jsp:include page="Button.jsp" />
                                         </button>
                                 </div>

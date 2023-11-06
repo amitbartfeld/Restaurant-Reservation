@@ -3,21 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/HomePage.jsp</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/SearchBar.jsp</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/TimeField.jsp</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/RestaurantDetailsChanger.java</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/RestaurantCard.jsp</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/Constants.java</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/ViewReservations.jsp</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/test/model/DatabaseOperationsSingletonTest.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/searchBar.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/Signup.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/Login.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/ClientReservationView.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/RestaurantEdit.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/DatabaseUserCreator.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/OldClientReservationView.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/RestaurantReservationView.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/RestaurantPage.jsp</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/test/model/SearchRestaurantLogicTest.java</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/SearchRestaurantsPage.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/auth/DatabaseRestaurantCreator.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/test/model/OpeningHoursTest.java</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/DatabaseOperationsSingleton.java</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/SearchRestaurantLogic.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/SearchRestaurantsPage.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/RestaurantSignup.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/controller/Controller.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/header.jsp</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/auth/RegisteredClient.java</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/OpeningHours.java</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/Reservation.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/auth/DatabaseClientCreator.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/src/java/model/auth/AuthenticationLogic.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/SoftwareEngineeringProject/web/view/RestaurantOldReservation.jsp</file>
         </group>
     </open-files>
 </project-private>

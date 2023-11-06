@@ -49,10 +49,10 @@
                         LinkedList<Object[]> rows = databaseOperations.getAllRows();
                         for (Object[] row : rows) {
                             Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
-                            if (!r.isRelevant() && r.getClientUserName().equals(user.username)) {
+                            if (r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
                                 request.setAttribute("reservation", r);
                                 %>
-                                   <jsp:include page="ClientOldReservationView.jsp" />
+                                   <jsp:include page="RestaurantReservationView.jsp" />
                                 <%
                             }
                         }
@@ -69,10 +69,10 @@
                         LinkedList<Object[]> rows = databaseOperations.getAllRows();
                         for (Object[] row : rows) {
                             Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
-                            if (r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
+                            if (!r.isRelevant() && r.getClientUserName().equals(user.username)) {
                                 request.setAttribute("reservation", r);
                                 %>
-                                   <jsp:include page="RestaurantReservationView.jsp" />
+                                   <jsp:include page="OldClientReservationView.jsp" />
                                 <%
                             }
                         }
@@ -84,7 +84,7 @@
                             if (!r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
                                 request.setAttribute("reservation", r);
                                 %>
-                                   <jsp:include page="RestaurantOldReservationView.jsp" />
+                                   <jsp:include page="RestaurantOldReservation.jsp" />
                                 <%
                             }
                         }

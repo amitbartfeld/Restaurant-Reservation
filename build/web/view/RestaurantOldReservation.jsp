@@ -22,7 +22,7 @@
                 <jsp:getProperty name="reservation" property="reservationTime" />
             </p>
             <p class="rloc" id="rloc">
-                <jsp:getProperty name="reservation" property="userName" />
+                <jsp:getProperty name="reservation" property="clientUserName" />
             </p>
             <p class="rloc" id="rloc">
                 <jsp:getProperty name="reservation" property="numOfPeople" /> people

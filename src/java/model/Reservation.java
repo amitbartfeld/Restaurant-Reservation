@@ -75,7 +75,7 @@ public class Reservation {
         isRelevant = false;
         DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
         try {
-            databaseOperations.updateDataInSqlByUniqueColumn(Constants.reservationIsRelevantField, false, Constants.reservationTimeField, reservationTime);
+            databaseOperations.updateDataInSqlByUniqueColumn(Constants.reservationIsRelevantField, false, Constants.reservationTimeField, time);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Reservation.class.getName()).log(Level.SEVERE, null, ex);
         }
