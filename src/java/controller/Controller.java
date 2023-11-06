@@ -244,6 +244,8 @@ public class Controller extends HttpServlet {
                 new UserDetailsChanger(!isClient).deleteUser(user.username, request.getSession());
                 transferToPage("view/HomePage.jsp", request, response);
                 break;
+            case "cancel":
+                
             case "logout":
                 request.getSession().invalidate();
                 transferToPage("view/HomePage.jsp", request, response);
