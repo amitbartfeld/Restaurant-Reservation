@@ -5,18 +5,20 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.auth.DatabaseRestaurantCreator;
 
 /**
  *
  * @author admin
  */
 public class Reservation {
-    public String restaurantUserName;
-    public int numOfPeople;
-    public long reservationTime;
-    public boolean isRelevant;
+    private final String restaurantUserName;
+    private final int numOfPeople;
+    private final long reservationTime;
+    private boolean isRelevant;
 
     public Reservation(String restaurantUserName, int numOfPeople, long reservationTime, boolean isRelevant) {
         this.restaurantUserName = restaurantUserName;
@@ -24,6 +26,38 @@ public class Reservation {
         this.reservationTime = reservationTime;
         this.isRelevant = isRelevant;
     }
+
+    public int getNumOfPeople() {
+        return numOfPeople;
+    }
+
+    public String getReservationDate() {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(reservationTime);
+        return c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR);
+    }
+    
+    public String getReservationTime() {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(reservationTime);
+        return c.get(Calendar.HOUR_OF_DAY)+":00";
+    }
+
+    public String getRestaurantName() {
+        return new DatabaseRestaurantCreator().create(restaurantUserName).details.name;
+    }
+    
+    public String getRestaurantPhone() {
+        return new DatabaseRestaurantCreator().create(restaurantUserName).details.phone;
+    }
+
+    public boolean isIsRelevant() {
+        return isRelevant;
+    }
+    
+    
+    
+    
     
     public void delete() {
         try {

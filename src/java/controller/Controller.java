@@ -32,7 +32,10 @@ public class Controller extends HttpServlet {
                 transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
             case "signup":
-                
+                request.setAttribute("isClient", true);
+                request.setAttribute("pageName", "reservations");
+                request.setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
+                transferToPage("view/ViewReservations.jsp", request, response);
                 break;
             case "restaurantsignup":
                 break;

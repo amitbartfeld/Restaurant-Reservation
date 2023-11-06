@@ -32,8 +32,10 @@
             <div class="grid">
                 <!-- Get data from database -->
             <%
-                
-                RestaurantDetails[] restaurants = SearchRestaurantLogic.search(request.getParameter("search"));
+                String search = request.getParameter("search");
+                if (search == null)
+                search = "";
+                RestaurantDetails[] restaurants = SearchRestaurantLogic.search(search);
                 for (RestaurantDetails details : restaurants) {
                     request.setAttribute("restaurantName", details.name);
                     request.setAttribute("location", details.location);

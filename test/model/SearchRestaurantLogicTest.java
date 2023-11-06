@@ -70,7 +70,7 @@ public class SearchRestaurantLogicTest {
         System.out.println("search");
         DatabaseOperationsSingleton instance = DatabaseOperationsSingleton.getInstance(Constants.restaurantTable);
         try {
-            instance.insertDataToSql(new Object[]{"abc", "abcTheKing123", "abc's restaurant", "0549999999", "abc@gmail.com", "1-11 2-22 3-13 4-23 16-18 9-14 1-2", "Netanya", "www.abc.com"});
+            instance.insertDataToSql(new Object[]{"abc", "abcTheKing123", "abc's restaurant", "0549999999", "abc@gmail.com", "1-11 2-22 3-13 4-23 16-18 9-14 1-2", "Netanya"});
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(SearchRestaurantLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }

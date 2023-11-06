@@ -25,8 +25,7 @@ public class DatabaseRestaurantCreator extends DatabaseUserCreator {
         String email = (String) restaurantData[4];
         OpeningHours openingHours = getOpeningHours(restaurantData);
         String location = (String) restaurantData[6];
-        String website = (String) restaurantData[7];
-        RestaurantDetails details = new RestaurantDetails(username, name, phone, email, openingHours, location, website);
+        RestaurantDetails details = new RestaurantDetails(username, name, phone, email, openingHours, location);
         return new RegisteredRestaurant(details, password);
     }
     
