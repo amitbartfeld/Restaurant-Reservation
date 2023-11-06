@@ -101,7 +101,25 @@ public class Controller extends HttpServlet {
                     String password = request.getParameter("password");
                     String phone = request.getParameter("phone");
                     String email = request.getParameter("email");
-                    if (AuthenticationLogic.registerRestaurant(username, email, phone, password, request.getSession())) {
+                    String name = request.getParameter("name");
+                    String location = request.getParameter("location");
+                    int sundayO = Integer.parseInt(request.getParameter("sundayO").split(":")[0]);
+                    int sundayC = Integer.parseInt(request.getParameter("sundayC").split(":")[0]);
+                    int mondayO = Integer.parseInt(request.getParameter("mondayO").split(":")[0]);
+                    int mondayC = Integer.parseInt(request.getParameter("mondayC").split(":")[0]);
+                    int tuesdayO = Integer.parseInt(request.getParameter("tuesdayO").split(":")[0]);
+                    int tuesdayC = Integer.parseInt(request.getParameter("tuesdayC").split(":")[0]);
+                    int wednesdayO = Integer.parseInt(request.getParameter("wednesdayO").split(":")[0]);
+                    int wednesdayC = Integer.parseInt(request.getParameter("wednesdayC").split(":")[0]);
+                    int thursdayO = Integer.parseInt(request.getParameter("thursdayO").split(":")[0]);
+                    int thursdayC = Integer.parseInt(request.getParameter("thursdayC").split(":")[0]);
+                    int fridayO = Integer.parseInt(request.getParameter("fridayO").split(":")[0]);
+                    int fridayC = Integer.parseInt(request.getParameter("fridayC").split(":")[0]);
+                    int saturdayO = Integer.parseInt(request.getParameter("saturdayO").split(":")[0]);
+                    int saturdayC = Integer.parseInt(request.getParameter("saturdayC").split(":")[0]);
+                    int[] startingHours = new int[]{sundayO, mondayO, tuesdayO, wednesdayO, thursdayO, fridayO, saturdayO};
+                    int[] endingHours = new int[]{sundayC, mondayC, tuesdayC, wednesdayC, thursdayC, fridayC, saturdayC};
+                    if (AuthenticationLogic.registerRestaurant(username, password, name, phone, email, startingHours, endingHours, location, request.getSession())) {
                         request.setAttribute("pageName", "home");
                         request.setAttribute("restaurants",SearchRestaurantLogic.search(""));
                         transferToPage("view/SearchRestaurantsPage.jsp", request, response);
