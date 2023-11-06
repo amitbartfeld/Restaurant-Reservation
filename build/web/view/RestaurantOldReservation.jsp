@@ -1,3 +1,4 @@
+<%@page import="model.auth.DatabaseClientCreator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <jsp:useBean id="reservation" class="model.Reservation" scope="request" />
     <!DOCTYPE html>
@@ -27,7 +28,7 @@
                 <jsp:getProperty name="reservation" property="numOfPeople" /> people
             </p>
         <p class="rloc" id="rloc">
-        <jsp:getProperty name="reservation" property="email" /> • <jsp:getProperty name="reservation" property="phone" /> 
+            <%=new DatabaseClientCreator().create(reservation.getClientUserName()).getDetails().email%> • <%=new DatabaseClientCreator().create(reservation.getClientUserName()).getDetails().phone%> 
     </p>
         </div>
     </body>

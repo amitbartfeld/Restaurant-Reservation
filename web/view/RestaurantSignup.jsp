@@ -28,11 +28,11 @@
                 if ($("#password").val() !== $("#repeatPassword").val()) {
                     console.log("Passwords do not match");
                     $("#repeatPassword").css("border-color", "red");
-                    $("#signup").prop("disabled", true);
+                    $("#restaurantsignup").prop("disabled", true);
                 }
                 else{
                     $("#repeatPassword").css("border-color", "black");
-                    $("#signup").prop("disabled", false);
+                    $("#restaurantsignup").prop("disabled", false);
                 }
             });
             $("#repeatPassword").on('change keydown paste input', function (e) {
@@ -40,16 +40,19 @@
                 if ($("#password").val() !== $("#repeatPassword").val()) {
                     console.log("Passwords do not match");
                     $("#repeatPassword").css("border-color", "red");
-                    $("#signup").prop("disabled", true);
+                    $("#restaurantsignup").prop("disabled", true);
                 }
                 else{
                     $("#repeatPassword").css("border-color", "black");
-                    $("#signup").prop("disabled", false);
+                    $("#restaurantsignup").prop("disabled", false);
                 }
             });
             jQuery(document).on('focus click', 'input',  function(e){
-                    if ($("#username").val() === "" || $("#phone").val() === "" || $("#email").val() === "" || $("#password").val() === "" || $("#repeatPassword").val() === "") {
-                        $("#signup").prop("disabled", true);
+                    if ($("#username").val() === "" || $("#phone").val() === "" || $("#email").val() === "" || $("#password").val() === "") {
+                        $("#restaurantsignup").prop("disabled", true);
+                    }
+                    else{
+                        $("#restaurantsignup").prop("disabled", false);
                     }
             });
         });

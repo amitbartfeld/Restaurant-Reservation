@@ -51,6 +51,9 @@
                     if ($("#username").val() === "" || $("#phone").val() === "" || $("#email").val() === "" || $("#password").val() === "" || $("#repeatPassword").val() === "") {
                         $("#signup").prop("disabled", true);
                     }
+                    else{
+                        $("#signup").prop("disabled", false);
+                    }
                 });
             });
 

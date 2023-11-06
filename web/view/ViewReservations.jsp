@@ -26,13 +26,13 @@
         <form action='Controller'>
         <jsp:include page="Header.jsp" />
         <jsp:include page="HelloTitle.jsp" />
-        <jsp:include page="SearchBar.jsp" />
+        <%--<jsp:include page="SearchBar.jsp" />--%>
         <div class="RestaurantContainer">
             <p>Last Reservations:</p>
             <div></div>
             <div class="grid">
                 <%
-                    if ((boolean)request.getSession().getAttribute("isClient")) {
+                    if (Boolean.parseBoolean(request.getSession().getAttribute("isClient").toString())) {
                         DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
                         LinkedList<Object[]> rows = databaseOperations.getAllRows();
                         for (Object[] row : rows) {
@@ -56,6 +56,7 @@
                                 <%
                             }
                         }
+                    }
                     %>
             </div>
             <p>Reservations History:</p>
@@ -63,9 +64,9 @@
             <div class="grid">
                 <!-- add old reservations here -->
                 <%
-                    if ((boolean)request.getSession().getAttribute("isClient")) {
-                        databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
-                        rows = databaseOperations.getAllRows();
+                    if (Boolean.parseBoolean(request.getSession().getAttribute("isClient").toString())) {
+                        DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                        LinkedList<Object[]> rows = databaseOperations.getAllRows();
                         for (Object[] row : rows) {
                             Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
                             if (r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
@@ -76,8 +77,8 @@
                             }
                         }
                     } else {
-                        databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
-                        rows = databaseOperations.getAllRows();
+                        DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(Constants.reservationTable);
+                        LinkedList<Object[]> rows = databaseOperations.getAllRows();
                         for (Object[] row : rows) {
                             Reservation r = new Reservation(Long.parseLong(row[0].toString()), row[1].toString(), row[4].toString(), Integer.parseInt(row[2].toString()), Long.parseLong(row[5].toString()), Boolean.parseBoolean(row[3].toString()));
                             if (!r.isRelevant() && r.getRestaurantUserName().equals(user.username)) {
@@ -87,6 +88,7 @@
                                 <%
                             }
                         }
+                    }
                     %>
             </div>
         </div>
