@@ -44,7 +44,17 @@
     </p>
     <div class="center">
         <div class="formcard">
-
+            <form action="Controller">
+                <jsp:include page="DateField.jsp" />
+                <jsp:include page="TimeField.jsp" />
+                <!-- \/ Make sure the input in this text box is set to numbers only! \/ -->
+                <jsp:include page="TextField.jsp" />
+                <button type="submit" onclick="changeClick(id)" id="book">
+                    <%request.setAttribute("text", "✅ Book a place");%>
+                    <jsp:include page="Button.jsp" />
+                </button>
+                <input type="hidden" name="action" id="update" />
+            </form>
         </div>
     </div>
 </body>
