@@ -213,6 +213,8 @@ input.text::placeholder{
 /* Center */
 .center {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -258,7 +260,7 @@ input.text::placeholder{
   height: 55px;
   padding: 0 20px 0 20px;
   margin-bottom: 20px;
-  margin-top: -30px;
+  /*margin-top: -30px;*/
   flex-shrink: 0;
   border-radius: 10px;
   background: #FFE2AA;
@@ -490,7 +492,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 1274px;
+  width: fit-content;
 }
 .inputTitle{
   text-align: center;

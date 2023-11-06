@@ -51,10 +51,13 @@
     </head>
 
     <body>
-      <jsp:include page="Header.jsp" />
-      <jsp:include page="HelloTitle.jsp" />
+
       <!-- Sub Menu -->
       <form action="Controller">
+      <jsp:include page="Header.jsp" />
+      <jsp:include page="HelloTitle.jsp" />
+          <div class="center">
+          <div class="editmenu">
         <!-- Password menu item - will be active if subPage == "password" -->
 
           <button type="submit" onclick="changeClick(this.id);" id="password">
@@ -65,7 +68,7 @@
           <!-- Phone menu item - will be active if subPage == "phone" -->
             <button type="submit" onclick="changeClick(this.id);" id="phone">
             <% request.setAttribute("text", "📞 Change Phone Number" ); request.setAttribute("isActive",
-            !subPage.equals("phone")); request.setAttribute("isRed", false); System.out.println("phone"); request.setAttribute("buttonName", "phoneButton"); %>
+            !subPage.equals("phone")); request.setAttribute("isRed", false); request.setAttribute("buttonName", "phoneButton"); %>
               <jsp:include page="Button.jsp" />
             </button>
             <!-- Email menu item - will be active if subPage == "email" -->
@@ -78,12 +81,16 @@
               <!-- Delete menu item - will be active if subPage == "delete" -->
                 <button type="submit" onclick="changeClick(this.id);" id="delete">
                     <% request.setAttribute("text", "🗑️ Delete Account" ); request.setAttribute("isActive",
-                !subPage.equals("delete")); request.setAttribute("isRed", true); System.out.println("delete"); request.setAttribute("buttonName", "deleteButton"); %>
+                !subPage.equals("delete")); request.setAttribute("isRed", true); request.setAttribute("buttonName", "deleteButton"); %>
                   <jsp:include page="Button.jsp" />
                 </button>
-
+          </div>
+      </div>
 
       <!-- Change Password -->
+      <%
+          if (subPage.equals("password")) {
+      %>
         <div class="center">
           <div>
             <p class="inputTitle">Type new password:</p>
@@ -104,8 +111,10 @@
               </button>
           </div>
         </div>
+        <%}%>
 
       <!-- Change Phone Number -->
+      <%if (subPage.equals("phone")) {%>
         <div class="center">
           <div>
             <p>Your phone number is: <b>
@@ -124,8 +133,10 @@
               </div>
           </div>
         </div>
+        <%}%>
 
       <!-- Change Email -->
+        <%if (subPage.equals("email")) {%>
         <div class="center">
           <div>
             <p>Your email address is: <b>
@@ -144,8 +155,11 @@
               </div>
           </div>
         </div>
-
+        <%}%>
+        
       <!-- Delete Account -->
+    
+        <input type="hidden" name="action" id="update" />
     </form>
 
     </body>

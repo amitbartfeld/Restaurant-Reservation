@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Constants;
 import model.DatabaseOperationsSingleton;
 import model.SearchRestaurantLogic;
+import model.UserDetailsChanger;
 import model.auth.RestaurantDetails;
 import model.auth.UserDetails;
 
@@ -32,30 +33,27 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.getSession().setAttribute("user", new UserDetails("abcd", "abc@gmail.com", "0549999999"));
+        request.getSession().setAttribute("isClient", true);
         String action = request.getParameter("action");
         switch(action) {
             case "login":
                 String search = request.getParameter("search");
                 if (search == null)
                     search = "";
-                request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "home");
                 request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
                 transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
             case "signup":
-                request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "reservations");
                 transferToPage("view/ViewReservations.jsp", request, response);
                 break;
             case "restaurantsignup":
-                request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "edit");
                 request.setAttribute("subPage", "password");
                 transferToPage("view/UserDetailsPage.jsp", request, response);
                 break;
             case "restaurant":
-                request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "home");
                 transferToPage("view/RestaurantPage.jsp", request, response);
                 break;
@@ -63,7 +61,6 @@ public class Controller extends HttpServlet {
                 search = request.getParameter("search");
                 if (search == null)
                     search = "";
-                request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "home");
                 request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
                 transferToPage("view/SearchRestaurantsPage.jsp", request, response);
@@ -89,11 +86,56 @@ public class Controller extends HttpServlet {
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                request.setAttribute("isClient", true);
                 request.setAttribute("pageName", "reservations");
                 transferToPage("view/ViewReservations.jsp", request, response);
                 break;
-
+            case "password":
+                String newPassword = request.getParameter("newPassword");
+                if (newPassword != null) {
+                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                    new UserDetailsChanger(!isClient).changePassword(user.username, newPassword, request.getSession());
+                }
+                request.setAttribute("pageName", "edit");
+                request.setAttribute("subPage", "password");
+                transferToPage("view/UserDetailsPage.jsp", request, response);
+                break;
+            case "phone":
+                String newPhone = request.getParameter("newPhone");
+                if (newPhone != null) {
+                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                    new UserDetailsChanger(!isClient).changePhone(user.username, newPhone, request.getSession());
+                }
+                request.setAttribute("pageName", "edit");
+                request.setAttribute("subPage", "phone");
+                transferToPage("view/UserDetailsPage.jsp", request, response);
+                break;
+            case "email":
+                String newEmail = request.getParameter("newEmail");
+                if (newEmail != null) {
+                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                    new UserDetailsChanger(!isClient).changePhone(user.username, newEmail, request.getSession());
+                }
+                request.setAttribute("pageName", "edit");
+                request.setAttribute("subPage", "email");
+                transferToPage("view/UserDetailsPage.jsp", request, response);
+                break;
+            case "delete":
+                if (request.getParameter("delete") != null) {
+                    boolean isClient = (boolean)request.getSession().getAttribute("isClient");
+                    UserDetails user = (UserDetails)request.getSession().getAttribute("user");
+                    new UserDetailsChanger(!isClient).deleteUser(user.username, request.getSession());
+                }
+                transferToPage("view/HomePage.jsp", request, response);
+                break;
+            case "logout":
+                request.getSession().invalidate();
+                transferToPage("view/HomePage.jsp", request, response);
+            case "reservations":
+                request.setAttribute("pageName", "reservations");
+                transferToPage("view/ViewReservations.jsp", request, response);
         }
     }
     

@@ -75,10 +75,11 @@ public class UserDetailsChanger {
         }
     }
     
-    public void deleteUser(String username) {
+    public void deleteUser(String username, HttpSession session) {
         try {
             DatabaseOperationsSingleton databaseOperations = DatabaseOperationsSingleton.getInstance(tableName);
             databaseOperations.deleteDataFromDatabaseByUniqueColumn(usernameField, username);
+            session.invalidate();
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDetailsChanger.class.getName()).log(Level.SEVERE, null, ex);
         }
