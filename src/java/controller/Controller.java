@@ -63,6 +63,9 @@ public class Controller extends HttpServlet {
                 request.setAttribute("restaurants",SearchRestaurantLogic.search(search));
                 transferToPage("view/SearchRestaurantsPage.jsp", request, response);
                 break;
+            case "book":
+                System.out.println("hi");
+                break;
         }
     }
     

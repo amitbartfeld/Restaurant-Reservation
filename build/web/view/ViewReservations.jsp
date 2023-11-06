@@ -7,9 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Restaurant Reservation | Home</title>
         <link rel="stylesheet" href="./style.css">
+        <script>
+            function changeClick(id) {
+                document.getElementById("update").value = id;
+            }
+        </script>
     </head>
 
     <body>
+        <form action='Controller'>
         <jsp:include page="Header.jsp" />
         <jsp:include page="HelloTitle.jsp" />
         <div class="RestaurantContainer">
@@ -26,6 +32,8 @@
                 <jsp:include page="OldClientReservationView.jsp" />
             </div>
         </div>
+            <input type="hidden" name="action" id="update" />
+        </form>
     </body>
 
     </html>

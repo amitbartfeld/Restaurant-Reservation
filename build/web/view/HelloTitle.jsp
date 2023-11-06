@@ -24,15 +24,9 @@
             }
             $(".name").html(username);
         });
-        function changeClick(id) {
-                    document.getElementById("update").value = id;
-        }
     </script>
 </head>
 <body>
-    <form action="Controller">
     <p class="helloTitle">Hello <span class="name">User</span>! <button type="submit" onclick="changeClick(this.id);" id="edit" class="edit"><img id="details" src="img/edit.svg" /> </button></p>
-    <input type="hidden" name="action" id="update" />
-    </form>
 </body>
 </html>
