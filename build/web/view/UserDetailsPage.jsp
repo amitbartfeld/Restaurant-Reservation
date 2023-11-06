@@ -167,7 +167,9 @@
               <jsp:include page="TextField.jsp" />
           </div>
           <div>
-            <% request.setAttribute("text", "Delete Account" ); request.setAttribute("isActive", false);
+            <% request.setAttribute("text", "Delete Account" );
+              request.setAttribute("isActive", false); 
+              request.setAttribute("textFieldName", "delete");
               request.setAttribute("isRed", true); %>
               <button type="submit" onclick="changeClick(this.id);" id="deleteAccount">
                 <jsp:include page="Button.jsp" />
