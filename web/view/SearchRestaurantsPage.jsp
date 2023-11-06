@@ -26,6 +26,7 @@
         <div class="RestaurantContainer">
             <p>Featured Restaurants:</p><div></div>
             <div class="grid">
+                <!-- Get data from database -->
             <%
                 request.setAttribute("restaurantName", "Papa Joe");
                 request.setAttribute("location", "Mama Joe");
